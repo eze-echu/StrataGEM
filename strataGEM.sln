@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "strataGEM", "strataGEM\strataGEM.csproj", "{FF77166A-9228-4E89-BD4B-3C1D124EBEEF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF77166A-9228-4E89-BD4B-3C1D124EBEEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF77166A-9228-4E89-BD4B-3C1D124EBEEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF77166A-9228-4E89-BD4B-3C1D124EBEEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF77166A-9228-4E89-BD4B-3C1D124EBEEF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {497A30BE-DAB5-4FF6-AF14-7F528BA4C329}
+	EndGlobalSection
+EndGlobal
