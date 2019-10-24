@@ -6,15 +6,25 @@ que se va a usar de del **1 al 100**, en una "Moneda" que seria un cristal o ***
 van a haber diferentes roles para los usuarios (Normal, Moderador y Administrador), 
 las reviews van a estar divididas por juegos y se va a mostrar una destacada cuando se 
 selecciona el juego desde la pantalla principal. se van a poder añadir reviews y juegos, ambas 
-son editables y eliminables.
-#### **Caracteristicas:**
-1. Base de Datos:
-   - [ ] Usuarios
-   - [ ] Reviews
-   - [ ] Juegos
-   - [ ] Roles
-2. Views:
-   - [ ] Main Page
-   - [ ] Game Page
-   - [ ] BackOffice
-   - [ ] Log In / Register
+son editables y eliminables. Los juegos tienen su propia pantalla que muestra una imagen del juego,
+una breve descripcion, un promedio de ratings, y una review destacada.
+
+#### Clases
+- Usuario
+- Rol
+- Review
+- Juego
+
+#### Views
+   1. [ ] Home
+      - Juegos()
+      - Log In / Register
+      - Crear Juego
+   2. [ ] Juego
+      - Review()
+      - Editar Juego (Admins)
+      - Eliminar Juego (Admin)
+      - Crear Review
+      - Like/Dislike Review
+   3. [ ] Review
+      - Like/Dislike Review
