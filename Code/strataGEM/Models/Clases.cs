@@ -14,7 +14,7 @@ namespace strataGEM.Models
             private string _User_Password { get; set; }
             public string User_Email { get; set; }
             public int User_Role { get; set; }
-            public string User_Password {set => _User_Password = value; }
+            public string User_Password { set => _User_Password = value; }
 
             public Usuarios()
             {
@@ -46,5 +46,49 @@ namespace strataGEM.Models
 
             }
         }
+
+        public class Review
+        {
+            public int Review_Id { get; set; }
+            public int Review_IdGame { get; set; }
+            public int Review_Rating { get; set; }
+            public string Review_Description { get; set; }
+            public int Review_IdUser { get; set; }
+
+
+            public Review(int a, int b, int c, string d, int e)
+            {
+                Review_Id = a;
+                Review_IdGame = b;
+                Review_Rating = c;
+                Review_Description = d;
+                Review_IdUser = e;
+            }
+            public Review()
+            {
+
+            }
+
+        }
+        public class Game
+        {
+            public int Game_Id { get; set; }
+            public string Game_Name { get; set; }
+            public string Game_Image { get; set; }
+            public string Game_Description { get; set; }
+
+            public Game(int a, string b, string c, string d)
+            {
+                Game_Id = a;
+                Game_Name = b;
+                Game_Image = c;
+                Game_Description = d;
+            }
+            public Game()
+            {
+
+            }
+        }
+        
     }
 }
