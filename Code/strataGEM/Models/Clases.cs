@@ -41,6 +41,10 @@ namespace strataGEM.Models
                 Role_Id = a;
                 Role_Name = b;
             }
+            public Role()
+            {
+
+            }
         }
     }
 }
