@@ -148,28 +148,60 @@ namespace strataGEM.Controllers
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
-        {
+        {/*
+            if (ModelState.IsValid)
+             {
+                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                 var result = await UserManager.CreateAsync(user, model.Password);
+                 if (result.Succeeded)
+                 {
+                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+
+                     // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
+                     // Enviar correo electrónico con este vínculo
+                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                     // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
+
+                     return RedirectToAction("Index", "Home");
+                 }
+                 AddErrors(result);
+             }*/
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var context = new ApplicationDbContext();
+                ApplicationUser applicationUser;
+                //you can try to get accountId field from session
+                int accountId = 1;
+                Account account = (Account)context.Accounts.Find(accountId);
+                if (account != null)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
-                    // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Enviar correo electrónico con este vínculo
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirmar cuenta", "Para confirmar la cuenta, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    applicationUser = new ApplicationUser
+                    {
+                        UserName = model.Email,
+                        Email = model.Email,
+                        AccountId = account.Id,
+                        IsActive = model.IsActive,
+                        DisplayName = model.DisplayName
+                    };
+                    var result = await UserManager.CreateAsync(applicationUser, model.Password);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(applicationUser, isPersistent: false, rememberBrowser: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    AddErrors(result);
+                    return View(model);
                 }
-                AddErrors(result);
+                AddCustomizeError("Account Code Not Found.");
             }
 
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
+        }
+        private void AddCustomizeError(string error)
+        {
+            ModelState.AddModelError(error, error);
         }
 
         //

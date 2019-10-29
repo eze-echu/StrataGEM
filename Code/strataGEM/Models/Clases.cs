@@ -118,8 +118,8 @@ namespace strataGEM.Models
                     string User_Password = (Lector["Password"].ToString());
                     string User_Email = (Lector["Mail"].ToString());
                     int User_Role = Convert.ToInt32(Lector["Role"]);
-
-                    UnUsuario = new Usuario(Id, User_Name, User_Password, User_Email, User_Role);
+                    int Id = 0;
+                    UnUsuario = new Usuario( Id, User_Name, User_Password, User_Email, User_Role);
 
                 }
                 Desconectar(Conn);

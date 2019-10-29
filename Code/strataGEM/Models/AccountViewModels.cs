@@ -70,6 +70,10 @@ namespace strataGEM.Models
         public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Display Name")]
+        public string DisplayName { get; set; }
+
+        [Required]
         [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
@@ -79,6 +83,9 @@ namespace strataGEM.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Active")]
+        public bool IsActive { get; set; }
     }
 
     public class ResetPasswordViewModel
