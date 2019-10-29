@@ -8,7 +8,7 @@ namespace strataGEM.Models
 {
     public class Clases
     {
-        public class Usuarios
+        public class Usuario
         {
             public int User_Id { get; set; }
             public string User_Name { get; set; }
@@ -17,12 +17,12 @@ namespace strataGEM.Models
             public int User_Role { get; set; }
             public string User_Password { set => _User_Password = value; }
 
-            public Usuarios()
+            public Usuario()
             {
 
             }
-
-            public Usuarios(int a, string b, string c, string d, int e)
+            
+            public Usuario(int a, string b, string c, string d, int e)
             {
                 User_Id = a;
                 User_Name = b;
@@ -102,6 +102,28 @@ namespace strataGEM.Models
             private static void Desconectar(SqlConnection Conn)
             {
                 Conn.Close();
+            }
+            public static Usuario TraerUsuarios(int id)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.TraerUsuario " + id ;
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Usuario UnUsuario = new Usuario();
+                while (Lector.Read())
+                {
+                    
+                    string User_Name = (Lector["UserName"].ToString());
+                    string User_Password = (Lector["Password"].ToString());
+                    string User_Email = (Lector["Mail"].ToString());
+                    int User_Role = Convert.ToInt32(Lector["Role"]);
+
+                    UnUsuario = new Usuario(Id, User_Name, User_Password, User_Email, User_Role);
+
+                }
+                Desconectar(Conn);
+                return UnUsuario;
             }
         }
         
