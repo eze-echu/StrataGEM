@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.SqlClient;
 
 namespace strataGEM.Models
 {
@@ -87,6 +88,20 @@ namespace strataGEM.Models
             public Game()
             {
 
+            }
+        }
+        public class BD
+        {
+            private static SqlConnection Conectar()
+            {
+                string strConn = "Server=.;Database =BD;Trusted_Connection=True;";
+                SqlConnection a = new SqlConnection(strConn);
+                a.Open();
+                return a;
+            }
+            private static void Desconectar(SqlConnection Conn)
+            {
+                Conn.Close();
             }
         }
         
