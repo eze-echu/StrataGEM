@@ -27,4 +27,5 @@ namespace strataGEM.Migrations
             //  to avoid creating duplicate seed data.
         }
     }
+    
 }
