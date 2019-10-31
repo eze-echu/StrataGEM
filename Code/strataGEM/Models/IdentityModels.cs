@@ -6,6 +6,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations;
+using System;
+using System.Linq;
 
 
 namespace strataGEM.Models
@@ -13,7 +15,12 @@ namespace strataGEM.Models
     // Para agregar datos de perfil del usuario, agregue más propiedades a su clase ApplicationUser. Visite https://go.microsoft.com/fwlink/?LinkID=317594 para obtener más información.
     public class ApplicationUser : IdentityUser
     {
+        public ApplicationUser() : base()
+        {
+            PasswordHistory = new List<PasswordHistory>();
+        }
 
+        public virtual List<PasswordHistory> PasswordHistory { get; set; }
         public int AccountId { get; set; }
 
         public virtual Account Account { get; set; }
@@ -53,6 +60,25 @@ namespace strataGEM.Models
         }
         
 
-        public DbSet Accounts { get; set; }
+        public DbSet<Account> Accounts { get; set; }
+    }
+    public class PasswordHistory
+    {
+
+
+        public PasswordHistory()
+        {
+            CreatedDate = DateTime.Now;
+        }
+
+        public DateTime CreatedDate { get; set; }
+
+        [Key, Column(Order = 1)]
+        public string PasswordHash { get; set; }
+
+        [Key, Column(Order = 0)]
+        public string UserId { get; set; }
+
+        public virtual ApplicationUser User { get; set; }
     }
 }

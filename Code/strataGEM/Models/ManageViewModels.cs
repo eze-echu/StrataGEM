@@ -28,7 +28,7 @@ namespace strataGEM.Models
     public class SetPasswordViewModel
     {
         [Required]
-        [StringLength(100, ErrorMessage = "{0} debe tener al menos {2} caracteres de longitud.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} debe tener al menos {2} caracteres de longitud.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña nueva")]
         public string NewPassword { get; set; }
@@ -47,7 +47,7 @@ namespace strataGEM.Models
         public string OldPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "{0} debe tener al menos {2} caracteres de longitud.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "{0} debe tener al menos {2} caracteres de longitud.", MinimumLength = 8)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña nueva")]
         public string NewPassword { get; set; }

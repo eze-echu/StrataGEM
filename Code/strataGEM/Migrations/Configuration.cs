@@ -16,8 +16,7 @@ namespace strataGEM.Migrations
 
         protected override void Seed(strataGEM.Models.ApplicationDbContext context)
         {
-            IDbSet<Account> a = (IDbSet<Account>)context.Accounts;
-            a.AddOrUpdate<Account>(account => account.Name,
+            context.Accounts.AddOrUpdate<Account>(account => account.Name,
                 new Account { Name = "Account1" },
                 new Account { Name = "Account2" },
                 new Account { Name = "Account3" });

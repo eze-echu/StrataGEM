@@ -35,9 +35,46 @@ namespace strataGEM
     // Configure el administrador de usuarios de aplicación que se usa en esta aplicación. UserManager se define en ASP.NET Identity y se usa en la aplicación.
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
+        private const int PASSWORD_HISTORY_LIMIT = 3;
+        private async Task<bool> IsPasswordHistory(string userId, string newPassword)
+        {
+            var user = await FindByIdAsync(userId);
+            if (user.PasswordHistory.OrderByDescending(o => o.CreatedDate)
+                .Select(s => s.PasswordHash)
+                .Take(PASSWORD_HISTORY_LIMIT)
+                .Where(w => PasswordHasher.VerifyHashedPassword(w, newPassword) != PasswordVerificationResult.Failed).Any())
+                return true;
+            return false;
+        }
+        public Task AddToPasswordHistoryAsync(ApplicationUser user, string password)
+        {
+            user.PasswordHistory.Add(new PasswordHistory()
+            {
+                UserId = user.Id,
+                PasswordHash = password
+            });
+            return UpdateAsync(user);
+        }
+        public override async Task<IdentityResult> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
+        {
+            if (await IsPasswordHistory(userId, newPassword))
+                return await Task.FromResult(IdentityResult.Failed("Cannot reuse old password"));
+            var result = await base.ChangePasswordAsync(userId, currentPassword, newPassword); if (result.Succeeded)
+            {
+                ApplicationUser user = await FindByIdAsync(userId);
+                user.PasswordHistory.Add(new PasswordHistory()
+                {
+                    UserId = user.Id,
+                    PasswordHash = PasswordHasher.HashPassword(newPassword)
+                });
+                return await UpdateAsync(user);
+            }
+            return result;
+        }
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
+            PasswordValidator = new MinimumLengthValidator(8);
         }
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
@@ -53,8 +90,8 @@ namespace strataGEM
             // Configure la lógica de validación de contraseñas
             manager.PasswordValidator = new PasswordValidator
             {
-                RequiredLength = 6,
-                RequireNonLetterOrDigit = true,
+                RequiredLength = 8,
+                RequireNonLetterOrDigit = false,
                 RequireDigit = true,
                 RequireLowercase = true,
                 RequireUppercase = true,

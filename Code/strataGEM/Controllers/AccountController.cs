@@ -173,7 +173,7 @@ namespace strataGEM.Controllers
                 ApplicationUser applicationUser;
                 //you can try to get accountId field from session
                 int accountId = 1;
-                Account account = (Account)context.Accounts.Find(accountId);
+                Account account = context.Accounts.Find(accountId);
                 if (account != null)
                 {
                     applicationUser = new ApplicationUser
