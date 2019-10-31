@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System;
 using System.Linq;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 
 namespace strataGEM.Models
