@@ -178,7 +178,7 @@ namespace strataGEM.Controllers
                 {
                     applicationUser = new ApplicationUser
                     {
-                        UserName = model.Email,
+                        UserName = model.DisplayName,
                         Email = model.Email,
                         AccountId = account.Id,
                         IsActive = model.IsActive,

@@ -49,8 +49,7 @@ namespace strataGEM.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Correo electrónico")]
-        [EmailAddress]
+        [Display(Name = "Nombre de Usuario")]
         public string Email { get; set; }
 
         [Required]
@@ -70,7 +69,7 @@ namespace strataGEM.Models
         public string Email { get; set; }
 
         [Required]
-        [Display(Name = "Display Name")]
+        [Display(Name = "Nombre de Usuario")]
         public string DisplayName { get; set; }
 
         [Required]
