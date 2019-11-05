@@ -10,29 +10,53 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--@Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
-                <a href="@Url.Action("Index", "Home")" class="navbar-brand" style="padding-top: 0px">
-                    <img src="~/Content/Images/Logo_StrataGEM.png" title="title" alt="additional title" height="50" width="70" />
-                </a>
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-warp">
+            <div class="header-social d-flex justify-content-end">
+                <p>Follow us:</p>
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-behance"></i></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <!--<li>@Html.ActionLink("Inicio", "Index", "Home")</li>-->
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="header-bar-warp d-flex">
+                <!-- site logo -->
+                <a href="home.html" class="site-logo">
+                    <img src="./img/logo.png" alt="">
+                </a>
+                <nav class="top-nav-area w-100">
+                    <div class="user-panel">
+                        <a href="">Login</a> / <a href="">Register</a>
+                    </div>
+                    <!-- Menu -->
+                    <ul class="main-menu primary-menu">
+                        <li><a href="home.html">Home</a></li>
+                        <li>
+                            <a href="games.html">Games</a>
+                            <ul class="sub-menu">
+                                <li><a href="game-single.html">Game Singel</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="review.html">Reviews</a></li>
+                        <li><a href="blog.html">News</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
+    </header>
+    <!-- Header section end -->
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <!--<li>@Html.ActionLink("Inicio", "Index", "Home")</li>-->
+            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+        </ul>
+        @Html.Partial("_LoginPartial")
     </div>
+    <!-- Footer section -->
     <div class="container body-content">
         @RenderBody()
         <hr />
@@ -40,9 +64,46 @@
             <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
         </footer>
     </div>
-
+    <footer class="footer-section">
+        <div class="container">
+            <div class="footer-left-pic">
+                <img src="img/footer-left-pic.png" alt="">
+            </div>
+            <div class="footer-right-pic">
+                <img src="img/footer-right-pic.png" alt="">
+            </div>
+            <a href="#" class="footer-logo">
+                <img src="./img/logo.png" alt="">
+            </a>
+            <ul class="main-menu footer-menu">
+                <li><a href="">Home</a></li>
+                <li><a href="">Games</a></li>
+                <li><a href="">Reviews</a></li>
+                <li><a href="">News</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+            <div class="footer-social d-flex justify-content-center">
+                <a href="#"><i class="fa fa-pinterest"></i></a>
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-behance"></i></a>
+            </div>
+            <div class="copyright"><a href="">Colorlib</a> 2018 All rights reserved</div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <!--====== Javascripts & Jquery ======-->
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.slicknav.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.sticky-sidebar.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/main.js"></script>
+
 </body>
 </html>

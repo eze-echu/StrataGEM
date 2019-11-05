@@ -23,8 +23,13 @@ namespace strataGEM
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Assets/css/animate.css",
+                      "~/Assets/css/bootstrap.min.css",
+                      "~/Assets/css/font-awesome.min.css",
+                      "~/Assets/css/magnific-popup.min.css",
+                      "~/Assets/css/owl.carousel.min.css",
+                      "~/Assets/css/slicknav.min.css",
+                      "~/Assets/css/style.css"));
         }
     }
 }
