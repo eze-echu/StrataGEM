@@ -13,10 +13,12 @@
 
 html,
 body {
-	height: 100%;
-	font-family: 'Roboto', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
+    background: #501755;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-shadow: rgba(0,0,0,.01) 0 0 1px;
+    padding-top: 154px;
 }
 
 h1,
@@ -55,10 +57,10 @@ h6 {
 }
 
 p {
-	font-size: 15px;
-	color: #585858;
-	line-height: 1.6;
-	font-weight: 500;
+    font-size: 15px;
+    color: #68647d;
+    line-height: 1.6;
+    font-weight: 500;
 }
 
 img {

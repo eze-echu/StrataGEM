@@ -15,33 +15,38 @@
         <div class="header-warp">
             <div class="header-social d-flex justify-content-end">
                 <p>Follow us:</p>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-behance"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-pinterest"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-facebook"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-twitter"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-dribbble"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-behance"></i></a>
             </div>
             <div class="header-bar-warp d-flex">
                 <!-- site logo -->
-                <a href="home.html" class="site-logo">
-                    <img src="./img/logo.png" alt="">
+                <a href="@Url.Action("Index", "Home")" class="site-logo">
+                    <img src="~/Content/Images/Logo_StrataGEM.png" alt="StrataGEM, que no te agarren desapercibido" style="height: 55px; width: 170.672px">
                 </a>
                 <nav class="top-nav-area w-100">
                     <div class="user-panel">
-                        <a href="">Login</a> / <a href="">Register</a>
+                        @Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) /
+                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
                     </div>
                     <!-- Menu -->
                     <ul class="main-menu primary-menu">
-                        <li><a href="home.html">Home</a></li>
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
                         <li>
-                            <a href="games.html">Games</a>
+                            <a href="@Url.Action("List", "Games")">Games</a>
                             <ul class="sub-menu">
-                                <li><a href="game-single.html">Game Singel</a></li>
+                                <li><a href="@Url.Action("Top", "Games")">Top 10</a></li>
                             </ul>
                         </li>
-                        <li><a href="review.html">Reviews</a></li>
+                        <li><a href="@Url.Action("List", "Reviews")">Reviews</a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Top", "Reviews")">Most Voted</a></li>
+                            </ul>
+                        </li>
                         <li><a href="blog.html">News</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
                     </ul>
                 </nav>
             </div>
@@ -66,28 +71,22 @@
     </div>
     <footer class="footer-section">
         <div class="container">
-            <div class="footer-left-pic">
-                <img src="img/footer-left-pic.png" alt="">
-            </div>
-            <div class="footer-right-pic">
-                <img src="img/footer-right-pic.png" alt="">
-            </div>
             <a href="#" class="footer-logo">
-                <img src="./img/logo.png" alt="">
+                <img src="~/Content/Images/Logo_StrataGEM.png" alt="">
             </a>
             <ul class="main-menu footer-menu">
-                <li><a href="">Home</a></li>
-                <li><a href="">Games</a></li>
-                <li><a href="">Reviews</a></li>
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("List", "Games")">Games</a></li>
+                <li><a href="@Url.Action("List", "Reviews")">Reviews</a></li>
                 <li><a href="">News</a></li>
-                <li><a href="">Contact</a></li>
+                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
             </ul>
             <div class="footer-social d-flex justify-content-center">
-                <a href="#"><i class="fa fa-pinterest"></i></a>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-dribbble"></i></a>
-                <a href="#"><i class="fa fa-behance"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-pinterest"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-facebook"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-twitter"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-dribbble"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-behance"></i></a>
             </div>
             <div class="copyright"><a href="">Colorlib</a> 2018 All rights reserved</div>
         </div>
@@ -97,13 +96,13 @@
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
     <!--====== Javascripts & Jquery ======-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.slicknav.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.sticky-sidebar.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/Assets/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/js/jquery.sticky-sidebar.min.js"></script>
+    <script src="~/Assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Assets/js/main.js"></script>
 
 </body>
 </html>
