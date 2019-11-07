@@ -24,10 +24,12 @@
             <div class="header-bar-warp d-flex">
                 <!-- site logo -->
                 <a href="@Url.Action("Index", "Home")" class="site-logo">
-                    <img src="~/Content/Images/Logo_StrataGEM.png" alt="StrataGEM, que no te agarren desapercibido" style="height: 55px; width: 170.672px">
+                    <img src="~/Content/Images/Logo_StrataGEM1.png" alt="StrataGEM, que no te agarren desapercibido" style="height: 55px; width: 170.672px">
                 </a>
                 <nav class="top-nav-area w-100">
-                    @Html.Partial("_LoginPartial")
+                    <div class="user-panel">
+                        @Html.Partial("_LoginPartial")
+                    </div>
                     <!--<div class="user-panel">
                                         @Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) /
                                         @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })

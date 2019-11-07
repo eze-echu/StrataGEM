@@ -19,6 +19,7 @@ body {
     -webkit-font-smoothing: antialiased;
     text-shadow: rgba(0,0,0,.01) 0 0 1px;
     padding-top: 154px;
+    background: linear-gradient(45deg, #501755 0%, #2d1854 100%)
 }
 
 h1,
