@@ -27,10 +27,11 @@
                     <img src="~/Content/Images/Logo_StrataGEM.png" alt="StrataGEM, que no te agarren desapercibido" style="height: 55px; width: 170.672px">
                 </a>
                 <nav class="top-nav-area w-100">
-                    <div class="user-panel">
-                        @Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) /
-                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
-                    </div>
+                    @Html.Partial("_LoginPartial")
+                    <!--<div class="user-panel">
+                                        @Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) /
+                                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                    </div>-->
                     <!-- Menu -->
                     <ul class="main-menu primary-menu">
                         <li><a href="@Url.Action("Index", "Home")">Home</a></li>
@@ -40,7 +41,8 @@
                                 <li><a href="@Url.Action("Top", "Games")">Top 10</a></li>
                             </ul>
                         </li>
-                        <li><a href="@Url.Action("List", "Reviews")">Reviews</a>
+                        <li>
+                            <a href="@Url.Action("List", "Reviews")">Reviews</a>
                             <ul class="sub-menu">
                                 <li><a href="@Url.Action("Top", "Reviews")">Most Voted</a></li>
                             </ul>
@@ -53,14 +55,13 @@
         </div>
     </header>
     <!-- Header section end -->
-    <div class="navbar-collapse collapse">
+    <!-- <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
-            <!--<li>@Html.ActionLink("Inicio", "Index", "Home")</li>-->
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>-
             <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
         </ul>
-        @Html.Partial("_LoginPartial")
-    </div>
+    </div> -->
     <!-- Footer section -->
     <div class="container body-content">
         @RenderBody()
