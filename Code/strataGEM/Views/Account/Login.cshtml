@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Iniciar sesión";
 }
+@Styles.Render("~/Content/css")
 
 <h2>@ViewBag.Title.</h2>
 <div class="row">
@@ -14,40 +15,43 @@
                 <h4>Use una cuenta local para iniciar sesión.</h4>
                 <hr />
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+                <div class="contact-form">
                     <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Email, new { @type = "text", placeholder = "Nombre de Usuario" })
                         @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                <div class="contact-form">
                     <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                        @Html.PasswordFor(m => m.Password, new { @type = "password", placeholder = "Password" })
                         @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <div class="checkbox">
-                            @Html.CheckBoxFor(m => m.RememberMe)
-                            @Html.LabelFor(m => m.RememberMe)
-                        </div>
+                <div class="contact-form" style="border-bottom: 2px solid rgba(255, 255, 255, 0.54)">
+                    @Html.LabelFor(m => m.RememberMe, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.CheckBoxFor(m => m.RememberMe, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="contact-form">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Iniciar sesión" class="btn btn-default" />
+                        <!--<input type="submit" value="Iniciar sesión" class="btn btn-default" />-->
+                        <button class="site-btn" style="margin-top: 15px">
+                            Iniciar Sesion
+                            <img src="~/Assets/img/icons/double-arrow.png" alt="#">
+                        </button>
                     </div>
                 </div>
-                <p>
+                <div class="blog-text text-box text-white" style="padding-top: 15px">
+                    <a href="@Url.Action("Register", "Account")" class="read-more">Registrar como nuevo usuario  <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+                </div>
+                <!--<p>
                     @Html.ActionLink("Registrar como nuevo usuario", "Register")
-                </p>
+                </p>-->
                 @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
-                    <p>
-                        @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                    </p>*@
+            <p>
+                @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+            </p>*@
             }
         </section>
     </div>

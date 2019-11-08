@@ -16,8 +16,10 @@
 }
 else
 {
-    <div class="user-panel">
-        @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) /
-        @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </div>
+    <nav class="top-nav-area">
+        <div class="user-panel">
+            @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) /
+            @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+        </div>
+    </nav>
 }
