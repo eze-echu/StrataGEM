@@ -18,7 +18,7 @@ una breve descripcion, un promedio de ratings, y una review destacada.
 #### Views
    1. [ ] Home
       - Juegos()
-      [x] Log In / Register
+      - [x] Log In / Register
       - Crear Juego
    2. [ ] Juego
       - Review()
