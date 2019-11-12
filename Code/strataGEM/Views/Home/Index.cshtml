@@ -2,6 +2,17 @@
     ViewBag.Title = "Home Page";
 }
 
+<section class="hero-section overflow-hidden">
+    <div class="hero-slider owl-carousel">
+        <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="~/Assets/img/page-top-bg/3.jpg">
+            <div class="container">
+                <h2> @ViewBag.PopGame.Game_Name </h2>
+                <p>@ViewBag.PopGame.Game_Description</p>
+                <a href="@Html.ActionLink("GameIndv", "Games")" class="site-btn">Ver Juegos  <img src="img/icons/double-arrow.png" alt="#" /></a>
+            </div>
+        </div>
+    </div>
+</section>
 <div class="jumbotron">
     <h1>ASP.NET</h1>
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>

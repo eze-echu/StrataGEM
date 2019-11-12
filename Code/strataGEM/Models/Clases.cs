@@ -8,46 +8,6 @@ namespace strataGEM.Models
 {
     public class Clases
     {
-        public class Usuario
-        {
-            public int User_Id { get; set; }
-            public string User_Name { get; set; }
-            private string _User_Password { get; set; }
-            public string User_Email { get; set; }
-            public int User_Role { get; set; }
-            public string User_Password { set => _User_Password = value; }
-
-            public Usuario()
-            {
-
-            }
-            
-            public Usuario(int a, string b, string c, string d, int e)
-            {
-                User_Id = a;
-                User_Name = b;
-                User_Password = c;
-                User_Email = d;
-                User_Role = e;
-            }
-        }
-
-        public class Role
-        {
-            public int Role_Id { get; set; }
-            public string Role_Name { get; set; }
-
-            public Role(int a, string b)
-            {
-                Role_Id = a;
-                Role_Name = b;
-            }
-            public Role()
-            {
-
-            }
-        }
-
         public class Review
         {
             public int Review_Id { get; set; }
@@ -77,18 +37,23 @@ namespace strataGEM.Models
             public string Game_Name { get; set; }
             public string Game_Image { get; set; }
             public string Game_Description { get; set; }
+            public int Game_Average { get; set; }
+            public bool Game_Highlight { get; set; }
 
-            public Game(int a, string b, string c, string d)
+            public Game(int a, string b, string c, string d, int e, bool f)
             {
                 Game_Id = a;
                 Game_Name = b;
                 Game_Image = c;
                 Game_Description = d;
+                Game_Average = e;
+                Game_Highlight = f;
             }
             public Game()
             {
 
             }
+
         }
         public class BD
         {
@@ -103,27 +68,27 @@ namespace strataGEM.Models
             {
                 Conn.Close();
             }
-            public static Usuario TraerUsuarios(int id)
+            public static Game TraerJuegoPop()
             {
                 SqlConnection Conn = Conectar();
                 SqlCommand Consulta = Conn.CreateCommand();
                 Consulta.CommandType = System.Data.CommandType.Text;
-                Consulta.CommandText = "Exec dbo.TraerUsuario " + id ;
+                Consulta.CommandText = "Exec dbo.TraerJuegoPop";
                 SqlDataReader Lector = Consulta.ExecuteReader();
-                Usuario UnUsuario = new Usuario();
+                Game Pop = new Game();
                 while (Lector.Read())
                 {
-                    
-                    string User_Name = (Lector["UserName"].ToString());
-                    string User_Password = (Lector["Password"].ToString());
-                    string User_Email = (Lector["Mail"].ToString());
-                    int User_Role = Convert.ToInt32(Lector["Role"]);
-                    int Id = 0;
-                    UnUsuario = new Usuario( Id, User_Name, User_Password, User_Email, User_Role);
+                    int Game_Id = (int)Lector["IdGame"];
+                    string Game_Name = (Lector["Name"].ToString());
+                    string Game_Image = (Lector["Image"].ToString());
+                    string Game_Description = (Lector["Description"].ToString());
+                    int Game_Average = (int)Lector["PromedioValor"];
+                    bool Game_Highlight = (bool)Lector["Highlighted"];
+                    Pop = new Game(Game_Id, Game_Name, Game_Image, Game_Description, Game_Average, Game_Highlight);
 
                 }
                 Desconectar(Conn);
-                return UnUsuario;
+                return Pop;
             }
         }
         
