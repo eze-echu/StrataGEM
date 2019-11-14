@@ -15,15 +15,16 @@ namespace strataGEM.Models
             public int Review_Rating { get; set; }
             public string Review_Description { get; set; }
             public int Review_IdUser { get; set; }
+            public int Review_Likes { get; set; }
 
-
-            public Review(int a, int b, int c, string d, int e)
+            public Review(int a, int b, int c, string d, int e, int f)
             {
                 Review_Id = a;
                 Review_IdGame = b;
                 Review_Rating = c;
                 Review_Description = d;
                 Review_IdUser = e;
+                Review_Likes = f;
             }
             public Review()
             {
@@ -85,13 +86,148 @@ namespace strataGEM.Models
                     string Game_Description = (Lector["Description"].ToString());
                     int Game_Average = (int)Lector["PromedioValor"];
                     bool Game_Highlight = (bool)Lector["Destacado"];
+
                     Pop = new Game(Game_Id, Game_Name, Game_Image, Game_Description, Game_Average, Game_Highlight);
 
                 }
                 Desconectar(Conn);
                 return Pop;
             }
+            public static void AgregarJuego(string Name, string Image, string Description, bool Destacado)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.AgregarJuego '" + Name + "', '" + Image + "', '" + Description + "', '" + Destacado + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
+            public static void EliminarJuego(int IdGame)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.EliminarJuego '" + IdGame + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
+            public static void EliminarUsuario(int IdUser)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.EliminarUsuario '" + IdUser + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
+            public static void PromedioReviewsXJuego(int IdGame)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.PromedioReviewsXJuego '" + IdGame + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
+            public static List<Review> Top5Reseñas()
+            {
+                List<Review> Top5 = new List<Review>();
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.Top5Reseñas";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                while (Lector.Read())
+                {
+                    int Review_Id = (int)Lector["Id_Reseña"];
+                    int Game_Id = (int)Lector["Id_Juego"];
+                    int Review_Rating = (int)Lector["Puntaje_Dado"];
+                    int User_Id = (int)Lector["Puntaje_Dado"];
+                    string Review_Description = (Lector["Descripcion"].ToString());
+                    int Review_Likes = (int)Lector["LikeDislike"];
+
+                    Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes);
+                    Top5.Add(UnJuego);
+
+                }
+                Desconectar(Conn);
+                return Top5;
+            }
+            public static Game TraerJuego(int IdGame)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.TraerJuego'" + IdGame + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Game Juego = new Game();
+                while (Lector.Read())
+                {
+                    int Game_Id = (int)Lector["IdGame"];
+                    string Game_Name = (Lector["Name"].ToString());
+                    string Game_Image = (Lector["Image"].ToString());
+                    string Game_Description = (Lector["Description"].ToString());
+                    int Game_Average = (int)Lector["PromedioValor"];
+                    bool Game_Highlight = (bool)Lector["Destacado"];
+
+                    Juego = new Game(Game_Id, Game_Name, Game_Image, Game_Description, Game_Average, Game_Highlight);
+
+                }
+                Desconectar(Conn);
+                return Juego;
+            }
+            public static List<Game> TraerJuegos()
+            {
+                List<Game> ListGames = new List<Game>();
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.TraerJuegos";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                while (Lector.Read())
+                {
+                    int Game_Id = (int)Lector["IdGame"];
+                    string Game_Name = (Lector["Name"].ToString());
+                    string Game_Image = (Lector["Image"].ToString());
+                    string Game_Description = (Lector["Description"].ToString());
+                    int Game_Average = (int)Lector["PromedioValor"];
+                    bool Game_Highlight = (bool)Lector["Destacado"];
+
+                    Game UnJuego = new Game(Game_Id, Game_Name, Game_Image, Game_Description, Game_Average, Game_Highlight);
+                    ListGames.Add(UnJuego);
+                }
+                Desconectar(Conn);
+                return ListGames;
+            }
+            public static List<Review> TraerReseñasXJuego(int IdGame)
+            {
+                List<Review> ListRev = new List<Review>();
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.TraerReseñas'" + IdGame + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                while (Lector.Read())
+                {
+                    int Review_Id = (int)Lector["Id_Reseña"];
+                    int Game_Id = (int)Lector["Id_Juego"];
+                    int Review_Rating = (int)Lector["Puntaje_Dado"];
+                    int User_Id = (int)Lector["Puntaje_Dado"];
+                    string Review_Description = (Lector["Descripcion"].ToString());
+                    int Review_Likes = (int)Lector["LikeDislike"];
+
+                    Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes);
+                    ListRev.Add(UnJuego);
+
+                }
+                Desconectar(Conn);
+                return ListRev;
+            }
         }
-        
+
     }
 }
