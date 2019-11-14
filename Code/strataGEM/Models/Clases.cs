@@ -84,7 +84,7 @@ namespace strataGEM.Models
                     string Game_Image = (Lector["Image"].ToString());
                     string Game_Description = (Lector["Description"].ToString());
                     int Game_Average = (int)Lector["PromedioValor"];
-                    bool Game_Highlight = (bool)Lector["Highlighted"];
+                    bool Game_Highlight = (bool)Lector["Destacado"];
                     Pop = new Game(Game_Id, Game_Name, Game_Image, Game_Description, Game_Average, Game_Highlight);
 
                 }
