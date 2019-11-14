@@ -394,7 +394,7 @@ ol {
 }
 
 .main-menu li a:hover:after {
-    background-image: url("../img/icons/arrow-down-color.png");
+    background-image: url("/Assets/img/icons/arrow-down-color.png");
 }
 
 .main-menu li a:hover i {
