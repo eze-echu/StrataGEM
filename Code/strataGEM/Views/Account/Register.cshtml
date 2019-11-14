@@ -4,7 +4,7 @@
 }
 
 <h2>@ViewBag.Title.</h2>
-<body style="padding-top: 154px">
+<body>
     @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()

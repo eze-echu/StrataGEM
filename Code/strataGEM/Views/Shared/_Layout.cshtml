@@ -64,7 +64,11 @@
             <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
         </ul>
     </div> -->
+    @RenderSection("Heros", required: false)
+    <div class="container body-content">
+    </div>
     <!-- Footer section -->
+
     <div class="container body-content">
         @RenderBody()
         <hr />

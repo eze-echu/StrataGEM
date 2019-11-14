@@ -13,15 +13,12 @@
 
 html,
 body {
-    background: #501755;
     height: 100%;
     font-family: 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
     text-shadow: rgba(0,0,0,.01) 0 0 1px;
-    padding-top: 154px;
     background: linear-gradient(45deg, #501755 0%, #2d1854 100%);
     height: 1000px;
-    
 }
 
 h1,
@@ -382,7 +379,7 @@ ol {
     height: 20px;
     right: 0;
     top: 1px;
-    background-image: url("../img/icons/arrow-down.png");
+    background-image: url("/Assets/img/icons/arrow-down.png");
     background-repeat: no-repeat;
     background-position: right center;
 }
@@ -415,7 +412,7 @@ ol {
 }
 
 .main-menu li:hover>a:after {
-    background-image: url("../img/icons/arrow-down-color.png");
+    background-image: url("/Assets/img/icons/arrow-down-color.png");
 }
 
 .main-menu li .sub-menu {
@@ -516,8 +513,8 @@ ol {
 
 .hero-item {
     height: 921px;
-    padding-top: 125px;
     border-bottom: 2px solid #b01ba5;
+    margin-top: 154px;
 }
 
 .hero-item h2 {
@@ -768,7 +765,7 @@ ol {
     -webkit-transition: all 0.2s;
     -o-transition: all 0.2s;
     transition: all 0.2s;
-    background-image: url("../img/icons/double-arrow.png");
+    background-image: url("/Assets/img/icons/double-arrow.png");
     background-repeat: no-repeat;
     background-position: right -120% center;
     background-size: 11px;
