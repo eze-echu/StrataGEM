@@ -59,7 +59,8 @@ namespace strataGEM.Models
         {
             private static SqlConnection Conectar()
             {
-                string strConn = "Server=.;Database =BD;Trusted_Connection=True;";
+                //string strConn = "Server=.;Database=StrataGEM;TrustedConnection=True";
+                string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
                 SqlConnection a = new SqlConnection(strConn);
                 a.Open();
                 return a;
