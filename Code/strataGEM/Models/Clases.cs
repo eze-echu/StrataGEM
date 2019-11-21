@@ -14,10 +14,10 @@ namespace strataGEM.Models
             public int Review_IdGame { get; set; }
             public int Review_Rating { get; set; }
             public string Review_Description { get; set; }
-            public int Review_IdUser { get; set; }
+            public string Review_IdUser { get; set; }
             public int Review_Likes { get; set; }
 
-            public Review(int a, int b, int c, string d, int e, int f)
+            public Review(int a, int b, int c, string d, string e, int f)
             {
                 Review_Id = a;
                 Review_IdGame = b;
@@ -60,8 +60,8 @@ namespace strataGEM.Models
         {
             private static SqlConnection Conectar()
             {
-                string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true" ;
-                //string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
+                //string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true" ;
+                string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
                 SqlConnection a = new SqlConnection(strConn);
                 a.Open();
                 return a;
@@ -146,7 +146,7 @@ namespace strataGEM.Models
                     int Review_Id = (int)Lector["Id_Reseña"];
                     int Game_Id = (int)Lector["Id_Juego"];
                     int Review_Rating = (int)Lector["Puntaje_Dado"];
-                    int User_Id = (int)Lector["Puntaje_Dado"];
+                    string User_Id = (string)Lector["Puntaje_Dado"];
                     string Review_Description = (Lector["Descripcion"].ToString());
                     int Review_Likes = (int)Lector["LikeDislike"];
 
@@ -216,7 +216,7 @@ namespace strataGEM.Models
                     int Review_Id = (int)Lector["Id_Reseña"];
                     int Game_Id = (int)Lector["Id_Juego"];
                     int Review_Rating = (int)Lector["Puntaje_Dado"];
-                    int User_Id = (int)Lector["Puntaje_Dado"];
+                    string User_Id = (string)Lector["User_Id"];
                     string Review_Description = (Lector["Descripcion"].ToString());
                     int Review_Likes = (int)Lector["LikeDislike"];
 

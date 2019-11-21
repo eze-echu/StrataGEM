@@ -1,0 +1,13 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    string a = User.Identity.GetUserId();
+    if (a == (string)ViewData["n"])
+    {
+        <p>JAJJAJAJAJJAJA</p>
+    }
+}
+else
+{
+    <p>Hola que tal</p>
+}

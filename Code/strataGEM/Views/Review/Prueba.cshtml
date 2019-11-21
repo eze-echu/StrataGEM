@@ -1,0 +1,9 @@
+﻿@using strataGEM.Models;
+@{
+    ViewBag.Title = "Prueba";
+}
+<h2>Prueba</h2>
+@foreach (Clases.Review a in Model)
+{
+    <p>@a.Review_Description</p>@Html.Partial("_PerUser", new ViewDataDictionary { {"n", a.Review_IdUser } })
+}

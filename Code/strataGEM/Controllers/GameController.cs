@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using strataGEM.Models;
 
 namespace strataGEM.Controllers
 {
@@ -11,6 +12,9 @@ namespace strataGEM.Controllers
         // GET: Game
         public ActionResult Index()
         {
+
+            List<Clases.Game> LGames = Clases.BD.TraerJuegos();
+            ViewBag.Todass = LGames;
             return View();
         }
 
