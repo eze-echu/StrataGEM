@@ -4,10 +4,11 @@
     string a = User.Identity.GetUserId();
     if (a == (string)ViewData["n"])
     {
-        <p>JAJJAJAJAJJAJA</p>
+        <a href=@Url.Action("Editar", "Review", new { id = Model.Review_Id})>Editar</a>
+        <p>Eliminar</p>
     }
 }
 else
 {
-    <p>Hola que tal</p>
+    <p>Registrate para cualquier cosa</p>
 }

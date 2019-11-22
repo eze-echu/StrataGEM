@@ -16,8 +16,9 @@ namespace strataGEM.Models
             public string Review_Description { get; set; }
             public string Review_IdUser { get; set; }
             public int Review_Likes { get; set; }
+            public string Review_UserName { get; set; }
 
-            public Review(int a, int b, int c, string d, string e, int f)
+            public Review(int a, int b, int c, string d, string e, int f, string g)
             {
                 Review_Id = a;
                 Review_IdGame = b;
@@ -25,6 +26,7 @@ namespace strataGEM.Models
                 Review_Description = d;
                 Review_IdUser = e;
                 Review_Likes = f;
+                Review_UserName = g;
             }
             public Review()
             {
@@ -149,8 +151,9 @@ namespace strataGEM.Models
                     string User_Id = (string)Lector["Puntaje_Dado"];
                     string Review_Description = (Lector["Descripcion"].ToString());
                     int Review_Likes = (int)Lector["LikeDislike"];
+                    string UserName = (string)Lector["UserName"];
 
-                    Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes);
+                    Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes, UserName);
                     Top5.Add(UnJuego);
 
                 }
@@ -219,8 +222,9 @@ namespace strataGEM.Models
                     string User_Id = (string)Lector["User_Id"];
                     string Review_Description = (Lector["Descripcion"].ToString());
                     int Review_Likes = (int)Lector["LikeDislike"];
+                    string UserName = (string)Lector["UserName"];
 
-                    Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes);
+                    Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes, UserName);
                     ListRev.Add(UnJuego);
 
                 }
