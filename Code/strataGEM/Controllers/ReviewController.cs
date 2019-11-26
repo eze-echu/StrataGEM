@@ -34,14 +34,14 @@ namespace strataGEM.Controllers
 
             if (ModelState.IsValid)
             {
-                Clases.Agregar(newMovie);
-                db.SaveChanges();
+                Clases.BD.AgregarReview(newReview.Review_IdGame, newReview.Review_Rating, newReview.Review_IdUser, newReview.Review_Description);
+                
 
                 return RedirectToAction("Index");
             }
             else
             {
-                return View(newMovie);
+                return View(newReview);
             }
         }
 
