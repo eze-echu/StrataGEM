@@ -1,13 +1,14 @@
 ﻿@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
-    string a = User.Identity.GetUserId();
-    if (a == (string)ViewData["n"])
+    string b = User.Identity.GetUserId();
+    if (b == (string)ViewData["n"])
     {
-        <p>JAJJAJAJAJJAJA</p>
+        <p>Eliminar</p>
+        <a href=@Url.Action("Editar", "Review", new { id = Model.Review_Id})>Editar</a>
     }
 }
 else
 {
-    <p>Hola que tal</p>
+    <p>Registrate para cualquier cosa</p>
 }

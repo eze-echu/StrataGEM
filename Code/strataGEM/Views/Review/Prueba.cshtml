@@ -5,5 +5,7 @@
 <h2>Prueba</h2>
 @foreach (Clases.Review a in Model)
 {
-    <p>@a.Review_Description</p>@Html.Partial("_PerUser", new ViewDataDictionary { {"n", a.Review_IdUser } })
+    <h2>@a.Review_Description</h2>
+    <h3>@a.Review_UserName @a.Review_Likes</h3>
+    <p>@Html.Partial("_PerUser", new ViewDataDictionary { {"n", a.Review_IdUser } })</p>
 }
