@@ -5,14 +5,10 @@
 <h2>Prueba</h2>
 @foreach (Clases.Review a in Model)
  { 
-   <div class="ReviewGame">
+<div class="ReviewGame">
     <h2>@a.Review_Description</h2>
     <h3>@a.Review_UserName @a.Review_Likes</h3>
-<<<<<<< Updated upstream
-    @Html.Partial("_PerUser", new ViewDataDictionary { {"n", a.Review_IdUser }, {"f", a.Review_Id } })
+    @Html.Partial("_PerUser", new ViewDataDictionary { { "n", a.Review_IdUser }, { "f", a.Review_Id } })
+</div>
 }
-=======
-    <p>@Html.Partial("_PerUser", new ViewDataDictionary { {"n", a.Review_IdUser } })</p>
-   </div>
- }
->>>>>>> Stashed changes
+   
