@@ -193,6 +193,30 @@ namespace strataGEM.Models
                 Desconectar(Conn);
                 return Juego;
             }
+            public static Game TraerReview(int IdReview)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.TraerReview'" + IdReview + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Review UnaReview = new Review();
+                while (Lector.Read())
+                {
+                    int IdR = (int)Lector["Id_Reseña"];
+                    int IdG = (int)Lector["Id_Juego"];
+                    int Points = (int)Lector["Puntaje_Dado"];
+                    string Desc = (Lector["Descripcion"].ToString());
+                    string IdUs = (Lector["User_Id"].ToString());
+                    int Likes = (int)Lector["LikeDislike"];
+                    string UserName = (Lector["UserName"].ToString());
+
+                    UnaReview = new Review(IdR, IdG, Points, Desc, IdUs, Likes, UserName);
+
+                }
+                Desconectar(Conn);
+                return UnaReview;
+            }
             public static List<Game> TraerJuegos()
             {
                 List<Game> ListGames = new List<Game>();
