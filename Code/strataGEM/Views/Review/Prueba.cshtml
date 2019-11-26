@@ -2,13 +2,16 @@
 @{
     ViewBag.Title = "Prueba";
 }
-<h2>Prueba</h2>
-@foreach (Clases.Review a in Model)
- { 
-<div class="ReviewGame">
-    <h2>@a.Review_Description</h2>
-    <h3>@a.Review_UserName @a.Review_Likes</h3>
-    @Html.Partial("_PerUser", new ViewDataDictionary { { "n", a.Review_IdUser }, { "f", a.Review_Id } })
-</div>
-}
-   
+<div class="container body-content">
+
+    <h2>Prueba</h2>
+    <a href="@Html.ActionLink("CrearReview", "Review")">Crear</a>
+    @foreach (Clases.Review a in Model)
+    {
+        <div class="ReviewGame">
+            <h2>@a.Review_Description</h2>
+            <h3>@a.Review_UserName @a.Review_Likes</h3>
+            @Html.Partial("_PerUser", new ViewDataDictionary { { "n", a.Review_IdUser }, { "f", a.Review_Id } })
+        </div>
+    }
+    </div>

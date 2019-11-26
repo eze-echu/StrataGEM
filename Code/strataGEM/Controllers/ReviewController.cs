@@ -23,13 +23,13 @@ namespace strataGEM.Controllers
         }
 
         // GET: Review/Create
-        public ActionResult Create()
+        public ActionResult CrearReview()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Clases.Review newReview)
+        public ActionResult CrearReview(Clases.Review newReview)
         {
 
             if (ModelState.IsValid)

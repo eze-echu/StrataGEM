@@ -193,7 +193,7 @@ namespace strataGEM.Models
                 Desconectar(Conn);
                 return Juego;
             }
-            public static Game TraerReview(int IdReview)
+            public static Review TraerReview(int IdReview)
             {
                 SqlConnection Conn = Conectar();
                 SqlCommand Consulta = Conn.CreateCommand();
