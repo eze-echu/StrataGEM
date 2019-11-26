@@ -25,7 +25,12 @@ body {
     font-style: italic;
     
 }
-.Articulo1{
+.ReviewGame {
+    background-image: url("/Assets/img/page-top-bg/FondoRJ.png");
+    background-size: cover;
+    position: relative;
+}
+.Articulo1 {
     background-image:
 }
 h1,
