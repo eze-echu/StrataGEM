@@ -7,5 +7,5 @@
 {
     <h2>@a.Review_Description</h2>
     <h3>@a.Review_UserName @a.Review_Likes</h3>
-    <p>@Html.Partial("_PerUser", new ViewDataDictionary { {"n", a.Review_IdUser } })</p>
+    @Html.Partial("_PerUser", new ViewDataDictionary { {"n", a.Review_IdUser }, {"f", a.Review_Id } })
 }

@@ -2,10 +2,11 @@
 @if (Request.IsAuthenticated)
 {
     string b = User.Identity.GetUserId();
+    int aaaa = (int)ViewData["f"];
     if (b == (string)ViewData["n"])
     {
         <p>Eliminar</p>
-        <a href=@Url.Action("Editar", "Review", new { id = Model.Review_Id})>Editar</a>
+        <a href="@Html.Action("Editar", "Review", new { id = aaaa})">Editar</a>
     }
 }
 else
