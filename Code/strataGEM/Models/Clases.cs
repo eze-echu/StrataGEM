@@ -105,6 +105,16 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
+            public static void AgregarReview(int IdGame, int Points, string UserId, string Description)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.AgregarReview '" + IdGame + "', '" + Points + "', '" + Description + "', '" + UserId + "', '0'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
             public static void EliminarJuego(int IdGame)
             {
                 SqlConnection Conn = Conectar();

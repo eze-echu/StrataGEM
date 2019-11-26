@@ -28,6 +28,23 @@ namespace strataGEM.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Create(Clases.Review newReview)
+        {
+
+            if (ModelState.IsValid)
+            {
+                Clases.Agregar(newMovie);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(newMovie);
+            }
+        }
+
         // POST: Review/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
