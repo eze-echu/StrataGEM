@@ -345,6 +345,7 @@
     <Content Include="Views\Review\Prueba.cshtml" />
     <Content Include="Views\Shared\_PerUser.cshtml" />
     <Content Include="Views\Review\IndexRev.cshtml" />
+    <Content Include="Views\Review\View.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
