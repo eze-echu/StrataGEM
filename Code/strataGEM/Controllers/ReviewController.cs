@@ -18,6 +18,12 @@ namespace strataGEM.Controllers
             return View(LReviews);
         }
 
+        public ActionResult PasarNombre(int id)
+        {
+            Game Juego = Clases.BD.TraerJuego(id);
+            return View(Juego.Game_Name);
+        }
+
         // GET: Review/Details/5
         public ActionResult Details(int id)
         {
@@ -25,10 +31,6 @@ namespace strataGEM.Controllers
         }
 
         // GET: Review/Create
-        public ActionResult Crear()
-        {
-            return View();
-        }
 
         // POST: Review/Create
         [HttpPost]
