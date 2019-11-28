@@ -14,14 +14,8 @@ namespace strataGEM.Controllers
         {
             List<Review> LReviews = Clases.BD.TraerReseñasXJuego(id);
             Game juego = Clases.BD.TraerJuego(LReviews[0].Review_IdGame);
-            ViewBag.titulo = juego.Game_Name;
+            ViewBag.Juego = juego;
             return View(LReviews);
-        }
-
-        public ActionResult PasarNombre(int id)
-        {
-            Game Juego = Clases.BD.TraerJuego(id);
-            return View(Juego.Game_Name);
         }
 
         // GET: Review/Details/5
@@ -31,10 +25,15 @@ namespace strataGEM.Controllers
         }
 
         // GET: Review/Create
-
+        public ActionResult Crear(int id)
+        {
+            Game juego = Clases.BD.TraerJuego(id);
+            ViewBag.Juego = juego;
+            return View();
+        }
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Crear(FormCollection collection)
         {
             try
             {

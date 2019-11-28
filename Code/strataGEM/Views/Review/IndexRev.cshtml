@@ -3,8 +3,8 @@
     ViewBag.Title = "Prueba";
 }
 <div class="container body-content">
-    <h2 align="center"><font color="white"> @ViewBag.titulo </h2> <h3><font color="white">Reviews</h3>
-    @Html.ActionLink("Crear Review", "Crear", "Review")
+    <h2 align="center"><font color="white"> @ViewBag.Juego.Game_Name </h2> <h3><font color="white">Reviews</h3>
+    <a href="@Url.Action("Crear", "Review", new { id = ViewBag.Juego.Game_Id})"> Crear Review</a>
     @foreach (Review a in Model)
     {
         <div class="ReviewGame">
