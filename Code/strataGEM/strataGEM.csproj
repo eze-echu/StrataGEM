@@ -349,9 +349,12 @@
     <Content Include="Views\Review\IndexRev.cshtml" />
     <Content Include="Views\Review\CrearReview.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
+    <Content Include="Views\Review\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\aaaaa\" />
+    <Folder Include="Views\aaaa\" />
     <Folder Include="Views\Game\" />
   </ItemGroup>
   <ItemGroup>

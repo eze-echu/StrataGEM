@@ -23,31 +23,14 @@ namespace strataGEM.Controllers
         }
 
         // GET: Review/Create
-        public ActionResult CrearReview()
+        public ActionResult Crear()
         {
             return View();
         }
 
-        [HttpPost]
-        public ActionResult CrearReview(Clases.Review newReview)
-        {
-
-            if (ModelState.IsValid)
-            {
-                Clases.BD.AgregarReview(newReview.Review_IdGame, newReview.Review_Rating, newReview.Review_IdUser, newReview.Review_Description);
-                
-
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View(newReview);
-            }
-        }
-
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Crear(FormCollection collection)
         {
             try
             {
