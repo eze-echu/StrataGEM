@@ -7,23 +7,28 @@ namespace strataGEM.Models
 {
     public class Review
     {
-        public int Review_Id { get; set; }
-        public int Review_IdGame { get; set; }
+        private int _Review_Id;
+        private int _Review_IdGame;
+        private int _Review_Likes;
+        private string _Review_UserName;
+        private string _Review_IdUser;
         public int Review_Rating { get; set; }
         public string Review_Description { get; set; }
-        public string Review_IdUser { get; set; }
-        public int Review_Likes { get; set; }
-        public string Review_UserName { get; set; }
+        public int Review_Id { get => _Review_Id; }
+        public int Review_IdGame { get => _Review_IdGame; }
+        public int Review_Likes { get => _Review_Likes; }
+        public string Review_UserName { get => _Review_UserName; }
+        public string Review_IdUser { get => _Review_IdUser; }
 
         public Review(int a, int b, int c, string d, string e, int f, string g)
         {
-			Review_Id = a;
-            Review_IdGame = b;
+			_Review_Id = a;
+            _Review_IdGame = b;
             Review_Rating = c;
             Review_Description = d;
-            Review_IdUser = e;
-            Review_Likes = f;
-            Review_UserName = g;
+            _Review_IdUser = e;
+            _Review_Likes = f;
+            _Review_UserName = g;
         }
         public Review()
         {
