@@ -10,7 +10,7 @@ namespace strataGEM.Controllers
     public class ReviewController : Controller
     {
         // GET: Review
-        public ActionResult Prueba(int id)
+        public ActionResult IndexRev(int id)
         {
             List<Clases.Review> LReviews = Clases.BD.TraerReseñasXJuego(id);
             return View(LReviews);

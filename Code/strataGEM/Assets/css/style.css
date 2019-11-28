@@ -26,9 +26,12 @@ body {
     
 }
 .ReviewGame {
-    background-image: url("/Assets/img/page-top-bg/FondoRJ.png");
+    background-image: url("/Assets/img/page-top-bg/PDT.png");
     background-size: cover;
     position: relative;
+}
+.TitleRev {
+    color: #FFFFFF;
 }
 .Articulo1 {
     background-image:
