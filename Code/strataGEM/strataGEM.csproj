@@ -348,6 +348,7 @@
     <Content Include="Views\Review\IndexRev.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Review\Crear.cshtml" />
+    <Content Include="Views\Review\sdhfsjkdtkj.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
