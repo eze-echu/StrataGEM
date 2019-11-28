@@ -12,7 +12,7 @@ namespace strataGEM.Controllers
         // GET: Review
         public ActionResult IndexRev(int id)
         {
-            List<Clases.Review> LReviews = Clases.BD.TraerReseñasXJuego(id);
+            List<Review> LReviews = Clases.BD.TraerReseñasXJuego(id);
             return View(LReviews);
         }
 

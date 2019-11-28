@@ -13,7 +13,7 @@ namespace strataGEM.Controllers
         public ActionResult Index()
         {
 
-            List<Clases.Game> LGames = Clases.BD.TraerJuegos();
+            List<Game> LGames = Clases.BD.TraerJuegos();
             ViewBag.Todass = LGames;
             return View();
         }

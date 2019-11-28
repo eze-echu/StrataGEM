@@ -6,11 +6,11 @@
 
     <h2>Prueba</h2>
     <a href="@Html.ActionLink("CrearReview", "Review")">Crear</a>
-    @foreach (Clases.Review a in Model)
+    @foreach (Review a in Model)
     {
         <div class="ReviewGame">
             <div class="TitleRev"><h2><font color="white">@a.Review_Description</font></h2></div>
-            <h3>@a.Review_UserName @a.Review_Likes</h3>
+            <div><h3><font color="#B57EDC">@a.Review_UserName <font color="#F5C623">@a.Review_Likes</h3></div>
             @Html.Partial("_PerUser", new ViewDataDictionary { { "n", a.Review_IdUser }, { "f", a.Review_Id } })
         </div>
     }
