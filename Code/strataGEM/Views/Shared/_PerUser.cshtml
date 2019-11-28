@@ -5,8 +5,16 @@
     int aaaa = (int)ViewData["f"];
     if (b == (string)ViewData["n"])
     {
-        <p>Eliminar</p>
-        <a href="@Html.Action("Edit", "Review", new { id = aaaa})">Editar</a>
+        <p>
+            Eliminar
+            <a href=@Url.Action("Edit", "Review", new { id = aaaa})>Editar</a>
+        </p>
+    }
+    else
+    {
+        <p>
+            Like / Dislike
+        </p>
     }
 }
 else

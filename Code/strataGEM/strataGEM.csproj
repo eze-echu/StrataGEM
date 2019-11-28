@@ -344,10 +344,8 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Review\Prueba.cshtml" />
     <Content Include="Views\Shared\_PerUser.cshtml" />
     <Content Include="Views\Review\IndexRev.cshtml" />
-    <Content Include="Views\Review\CrearReview.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Review\Crear.cshtml" />
   </ItemGroup>

@@ -45,14 +45,15 @@ namespace strataGEM.Controllers
         }
 
         // GET: Review/Edit/5
-        public ActionResult Editar(int id)
+        public ActionResult Edit(int id)
         {
-            return View();
+            Review BB = Clases.BD.TraerReview(id);
+            return View(BB);
         }
 
         // POST: Review/Edit/5
         [HttpPost]
-        public ActionResult Editar(int id, FormCollection collection)
+        public ActionResult Edit(int id, FormCollection collection)
         {
             try
             {
