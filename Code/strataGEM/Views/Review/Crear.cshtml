@@ -11,31 +11,33 @@
             {
                 @Html.AntiForgeryToken()
 
-                <div class="form-horizontal">
-                    <h4>Crear Review para @ViewBag.titulo </h4>
-                    <hr />
-                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                    
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Review_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "textarea", placeholder = "Puntaje" } })
-                            @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
+            <div class="form-horizontal">
+                <h4>Crear Review para @ViewBag.Juego.Game_Name </h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Review_Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea", placeholder = "Descripción" } })
-                            @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
-                        </div>
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "textarea", placeholder = "Puntaje" } })
+                        @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
                     </div>
                 </div>
+
+                <div class="form-group">
+
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea", placeholder = "Descripción" } })
+                        @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
+
+
+                    </div>
+                </div>
+                <a href="@Url.Action("IndexRev", "Review", new { id = ViewBag.Juego.Game_Id})" class="site-btn"> Publicar  <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+            </div>
             }
 
             <div>
-                @Html.ActionLink("Back to List", "Index")
             </div>
         </div>
     </div>
