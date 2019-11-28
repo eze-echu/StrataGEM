@@ -13,6 +13,8 @@ namespace strataGEM.Controllers
         public ActionResult IndexRev(int id)
         {
             List<Review> LReviews = Clases.BD.TraerReseñasXJuego(id);
+            Game juego = Clases.BD.TraerJuego(LReviews[0].Review_IdGame);
+            ViewBag.titulo = juego.Game_Name;
             return View(LReviews);
         }
 
