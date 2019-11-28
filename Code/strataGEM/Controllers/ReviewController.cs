@@ -30,7 +30,7 @@ namespace strataGEM.Controllers
 
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Crear(FormCollection collection)
+        public ActionResult Create(FormCollection collection)
         {
             try
             {
