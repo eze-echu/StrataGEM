@@ -8,56 +8,6 @@ namespace strataGEM.Models
 {
     public class Clases
     {
-        public class Review
-        {
-            public int Review_Id { get; set; }
-            public int Review_IdGame { get; set; }
-            public int Review_Rating { get; set; }
-            public string Review_Description { get; set; }
-            public string Review_IdUser { get; set; }
-            public int Review_Likes { get; set; }
-            public string Review_UserName { get; set; }
-
-            public Review(int a, int b, int c, string d, string e, int f, string g)
-            {
-                Review_Id = a;
-                Review_IdGame = b;
-                Review_Rating = c;
-                Review_Description = d;
-                Review_IdUser = e;
-                Review_Likes = f;
-                Review_UserName = g;
-            }
-            public Review()
-            {
-
-            }
-
-        }
-        public class Game
-        {
-            public int Game_Id { get; set; }
-            public string Game_Name { get; set; }
-            public string Game_Image { get; set; }
-            public string Game_Description { get; set; }
-            public int Game_Average { get; set; }
-            public bool Game_Highlight { get; set; }
-
-            public Game(int a, string b, string c, string d, int e, bool f)
-            {
-                Game_Id = a;
-                Game_Name = b;
-                Game_Image = c;
-                Game_Description = d;
-                Game_Average = e;
-                Game_Highlight = f;
-            }
-            public Game()
-            {
-
-            }
-
-        }
         public class BD
         {
             private static SqlConnection Conectar()

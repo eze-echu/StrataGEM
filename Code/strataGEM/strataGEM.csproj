@@ -209,8 +209,10 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Clases.cs" />
+    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -346,6 +348,7 @@
     <Content Include="Views\Shared\_PerUser.cshtml" />
     <Content Include="Views\Review\IndexRev.cshtml" />
     <Content Include="Views\Review\CrearReview.cshtml" />
+    <Content Include="Views\Review\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
