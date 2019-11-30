@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using strataGEM.Models;
+using Microsoft.AspNet.Identity;
 
 namespace strataGEM.Controllers
 {
@@ -33,12 +34,14 @@ namespace strataGEM.Controllers
         }
         // POST: Review/Create
         [HttpPost]
-        public ActionResult Crear(FormCollection collection)
+        public ActionResult Crear(Review Tempo)
         {
             try
             {
+                Tempo.Review_IdUser = User.Identity.GetUserId();
+                Tempo.Review_UserName = User.Identity.GetUserName();
                 // TODO: Add insert logic here
-
+                Clases.BD.AgregarReview(Tempo.Review_IdGame, Tempo.Review_Rating, Tempo.Review_IdUser, Tempo.Review_Description, Tempo.Review_UserName);
                 return RedirectToAction("Index");
             }
             catch
@@ -53,16 +56,16 @@ namespace strataGEM.Controllers
             Review BB = Clases.BD.TraerReview(id);
             return View(BB);
         }
-
         // POST: Review/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Review collection)
         {
+            Review aaa = collection;
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+                Clases.BD.UpdateReview(collection.Review_Id, collection.Review_Rating, collection.Review_Description);
+                return RedirectToAction("IndexRev", new { id = collection.Review_IdGame});
             }
             catch
             {

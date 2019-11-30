@@ -8,7 +8,7 @@
     @foreach (Review a in Model)
     {
         <div class="ReviewGame">
-            <div class="TitleRev"><h2><font color="white">@a.Review_Description</font></h2></div>
+            <div class="TitleRev"><h2><font color="white">@a.Review_Description - @a.Review_Rating</font></h2></div>
             <div><h3><font color="#B57EDC">@a.Review_UserName <font color="#F5C623">@a.Review_Likes</h3></div>
             @Html.Partial("_PerUser", new ViewDataDictionary { { "n", a.Review_IdUser }, { "f", a.Review_Id } })
         </div>

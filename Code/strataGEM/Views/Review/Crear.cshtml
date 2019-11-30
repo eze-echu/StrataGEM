@@ -1,44 +1,56 @@
 ﻿@model strataGEM.Models.Review
-
+@using strataGEM.Models
+@using Microsoft.AspNet.Identity
 @{
 
 }
 
-<div class="container body-content">
-    <div class="contact-form">
-        <div class="col-md-10">
-            @using (Html.BeginForm("Create", "Review", new { id = ViewBag.Juego.Game_Id }))
-            {
-                @Html.AntiForgeryToken()
+    <div class="container body-content">
+        @if ((Request.IsAuthenticated) && Clases.BD.YaReview(User.Identity.GetUserId(), Model.Review_IdGame) == false)
+        {
+            <div class="contact-form">
+                <div class="col-md-10">
+                    @using (Html.BeginForm("Create", "Review", new { id = ViewBag.Juego.Game_Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            <h4>Crear Review para @ViewBag.Juego.Game_Name </h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-            <div class="form-horizontal">
-                <h4>Crear Review para @ViewBag.Juego.Game_Name </h4>
-                <hr />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
 
-                <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "textarea", placeholder = "Puntaje" } })
+                                    @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "textarea", placeholder = "Puntaje" } })
-                        @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
-                    </div>
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea", placeholder = "Descripción" } })
+                                    @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
+
+
+                                </div>
+                            </div>
+                        </div>
+                        @Html.HiddenFor(model => model.Review_IdGame)
+                        <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
+                            Iniciar Sesion
+                            <img src="/Assets/img/icons/double-arrow.png" alt="#">
+                        </button>
+                    }
                 </div>
-
-                <div class="form-group">
-
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea", placeholder = "Descripción" } })
-                        @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
-
-
-                    </div>
-                </div>
-                <a href="@Url.Action("IndexRev", "Review", new { id = ViewBag.Juego.Game_Id})" class="site-btn"> Publicar  <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
             </div>
-            }
-
-            <div>
-            </div>
-        </div>
+        }
+        else if (Clases.BD.YaReview(User.Identity.GetUserId(), Model.Review_IdGame) == true)
+        {
+            <h3>Acceso Denegado: Ya hizo una Review en este juego</h3>
+        }
+        else
+        {
+            <h3>Acceso Denegado: Debe estar logueado para realizar esta accion</h3>
+        }
     </div>
-</div>

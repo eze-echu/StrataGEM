@@ -12,8 +12,8 @@ namespace strataGEM.Models
         {
             private static SqlConnection Conectar()
             {
-                //string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true" ;
-                string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
+                string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true" ;
+                //string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
                 SqlConnection a = new SqlConnection(strConn);
                 a.Open();
                 return a;
@@ -55,13 +55,12 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
-            public static void AgregarReview(int IdGame, int Points, string UserId, string Description)
+            public static void AgregarReview(int IdGame, int Points, string UserId, string Description, string UserName)
             {
                 SqlConnection Conn = Conectar();
                 SqlCommand Consulta = Conn.CreateCommand();
                 Consulta.CommandType = System.Data.CommandType.Text;
-                Consulta.CommandText = "Exec dbo.AgregarReview '" + IdGame + "', '" + Points + "', '" + Description + "', '" + UserId + "', '0'";
-                SqlDataReader Lector = Consulta.ExecuteReader();
+                Consulta.CommandText = "Exec dbo.AgregarReview '" + IdGame + "', '" + Points + "', '" + Description + "', '" + UserId + "', '" + UserName + "'";
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
@@ -214,6 +213,30 @@ namespace strataGEM.Models
                 }
                 Desconectar(Conn);
                 return ListRev;
+            }
+            public static void UpdateReview(int id, int Punt, string Desc)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.UpdateReview '" + Desc + "', '" + Punt + "', '" + id + "'";
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
+            public static bool YaReview(string id, int juego)
+            {
+                bool yatiene = false;
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "SELECT * FROM Reviews WHERE User_Id = '" + id + "' and Id_Juego = '" + juego + "'";
+                SqlDataReader Lector = Consulta.ExecuteReader();
+                while (Lector.Read())
+                {
+                    yatiene = true;
+                }
+                Desconectar(Conn);
+                return yatiene;
             }
         }
 
