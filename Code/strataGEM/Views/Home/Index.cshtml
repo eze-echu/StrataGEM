@@ -3,17 +3,17 @@
 }
 
 @section Heros{
-<div >
-    <section class="hero-section overflow-hidden">
-        <div class="hero-slider owl-carousel">
-            <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="/Assets/img/page-top-bg/Fondo.png">
-                <div class="container">
-                    <h2> @ViewBag.PopGame.Game_Name</h2>
-                    <p>@ViewBag.PopGame.Game_Description</p>
-                    <a href="@Url.Action("IndexRev", "Review", new { id = ViewBag.PopGame.Game_Id})" class="site-btn">Ver Juegos  <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+    <div>
+        <section class="hero-section overflow-hidden">
+            <div class="hero-slider owl-carousel">
+                <div class="hero-item set-bg d-flex align-items-center justify-content-center text-center" data-setbg="/Assets/img/page-top-bg/Fondo.png">
+                    <div class="container">
+                        <h2> @ViewBag.PopGame.Game_Name</h2>
+                        <p>@ViewBag.PopGame.Game_Description</p>
+                        <a href="@Url.Action("IndexRev", "Review", new { id = ViewBag.PopGame.Game_Id})" class="site-btn">Ver Juegos  <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-</div>
+        </section>
+    </div>
 }

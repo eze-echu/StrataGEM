@@ -1,14 +1,11 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using strataGEM.Models;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace strataGEM.Controllers
 {
@@ -22,7 +19,7 @@ namespace strataGEM.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -34,9 +31,9 @@ namespace strataGEM.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -80,10 +77,13 @@ namespace strataGEM.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Intento de inicio de sesión no válido.");
@@ -116,17 +116,19 @@ namespace strataGEM.Controllers
                 return View(model);
             }
 
-            // El código siguiente protege de los ataques por fuerza bruta a los códigos de dos factores. 
-            // Si un usuario introduce códigos incorrectos durante un intervalo especificado de tiempo, la cuenta del usuario 
-            // se bloqueará durante un período de tiempo especificado. 
+            // El código siguiente protege de los ataques por fuerza bruta a los códigos de dos factores.
+            // Si un usuario introduce códigos incorrectos durante un intervalo especificado de tiempo, la cuenta del usuario
+            // se bloqueará durante un período de tiempo especificado.
             // Puede configurar el bloqueo de la cuenta en IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(model.ReturnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Código no válido.");
@@ -188,6 +190,7 @@ namespace strataGEM.Controllers
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(applicationUser, isPersistent: false, rememberBrowser: false);
+                        Clases.BD.AssignRole(applicationUser.Id);
                         return RedirectToAction("Index", "Home");
                     }
                     AddErrors(result);
@@ -199,6 +202,7 @@ namespace strataGEM.Controllers
             // Si llegamos a este punto, es que se ha producido un error y volvemos a mostrar el formulario
             return View(model);
         }
+
         private void AddCustomizeError(string error)
         {
             ModelState.AddModelError(error, error);
@@ -244,7 +248,7 @@ namespace strataGEM.Controllers
                 // Para obtener más información sobre cómo habilitar la confirmación de cuentas y el restablecimiento de contraseña, visite https://go.microsoft.com/fwlink/?LinkID=320771
                 // Enviar correo electrónico con este vínculo
                 // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
+                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 // await UserManager.SendEmailAsync(user.Id, "Restablecer contraseña", "Para restablecer la contraseña, haga clic <a href=\"" + callbackUrl + "\">aquí</a>");
                 // return RedirectToAction("ForgotPasswordConfirmation", "Account");
             }
@@ -366,10 +370,13 @@ namespace strataGEM.Controllers
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+
                 case SignInStatus.Failure:
                 default:
                     // Si el usuario no tiene ninguna cuenta, solicitar que cree una
@@ -456,6 +463,7 @@ namespace strataGEM.Controllers
         }
 
         #region Aplicaciones auxiliares
+
         // Se usa para la protección XSRF al agregar inicios de sesión externos
         private const string XsrfKey = "XsrfId";
 
@@ -512,6 +520,7 @@ namespace strataGEM.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-        #endregion
+
+        #endregion Aplicaciones auxiliares
     }
 }

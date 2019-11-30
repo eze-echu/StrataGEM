@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Microsoft.AspNet.Identity;
 using strataGEM.Models;
-using Microsoft.AspNet.Identity;
+using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace strataGEM.Controllers
 {
@@ -30,19 +27,23 @@ namespace strataGEM.Controllers
         {
             Game juego = Clases.BD.TraerJuego(id);
             ViewBag.Juego = juego;
-            return View();
+
+            var b = User.Identity.GetUserId();
+            var c = User.Identity.GetUserName();
+
+            Review BB = new Review(juego.Game_Id, b, c);
+            return View(BB);
         }
+
         // POST: Review/Create
         [HttpPost]
         public ActionResult Crear(Review Tempo)
         {
             try
             {
-                Tempo.Review_IdUser = User.Identity.GetUserId();
-                Tempo.Review_UserName = User.Identity.GetUserName();
                 // TODO: Add insert logic here
-                Clases.BD.AgregarReview(Tempo.Review_IdGame, Tempo.Review_Rating, Tempo.Review_IdUser, Tempo.Review_Description, Tempo.Review_UserName);
-                return RedirectToAction("Index");
+                Clases.BD.AgregarReview(Tempo.Review_IdGame, Tempo.Review_Rating, Tempo.Review_Description, Tempo.Review_UserName);
+                return RedirectToAction("IndexRev", new { id = Tempo.Review_IdGame });
             }
             catch
             {
@@ -56,6 +57,7 @@ namespace strataGEM.Controllers
             Review BB = Clases.BD.TraerReview(id);
             return View(BB);
         }
+
         // POST: Review/Edit/5
         [HttpPost]
         public ActionResult Edit(Review collection)
@@ -65,7 +67,7 @@ namespace strataGEM.Controllers
             {
                 // TODO: Add update logic here
                 Clases.BD.UpdateReview(collection.Review_Id, collection.Review_Rating, collection.Review_Description);
-                return RedirectToAction("IndexRev", new { id = collection.Review_IdGame});
+                return RedirectToAction("IndexRev", new { id = collection.Review_IdGame });
             }
             catch
             {

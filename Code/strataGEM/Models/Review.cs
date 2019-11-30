@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace strataGEM.Models
+﻿namespace strataGEM.Models
 {
     public class Review
     {
@@ -17,7 +12,7 @@ namespace strataGEM.Models
 
         public Review(int a, int b, int c, string d, string e, int f, string g)
         {
-			Review_Id = a;
+            Review_Id = a;
             Review_IdGame = b;
             Review_Rating = c;
             Review_Description = d;
@@ -25,11 +20,16 @@ namespace strataGEM.Models
             Review_Likes = f;
             Review_UserName = g;
         }
-        public Review()
-        {
 
+        public Review(int a, string b, string c)
+        {
+            Review_IdGame = a;
+            Review_IdUser = b;
+            Review_UserName = c;
         }
 
+        public Review()
+        {
+        }
     }
-
 }

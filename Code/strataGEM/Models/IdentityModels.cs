@@ -1,16 +1,13 @@
-﻿using System.Data.Entity;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Data.Entity.Migrations;
-using System;
-using System.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-
+using System.Data.Entity;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace strataGEM.Models
 {
@@ -36,11 +33,13 @@ namespace strataGEM.Models
         }
 
         public bool IsActive { get; set; }
+
         public string DisplayName
         {
             get; set;
         }
     }
+
     public class Account
     {
         public int Id { get; set; }
@@ -48,26 +47,24 @@ namespace strataGEM.Models
 
         public virtual ICollection Users { get; set; }
     }
+
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
-
         }
 
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-        
 
         public DbSet<Account> Accounts { get; set; }
     }
+
     public class PasswordHistory
     {
-
-
         public PasswordHistory()
         {
             CreatedDate = DateTime.Now;

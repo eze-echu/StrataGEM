@@ -1,13 +1,12 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <!-- Header section -->
@@ -66,9 +65,9 @@
         </ul>
     </div> -->
     @RenderSection("Heros", required: false)
-<div>
-    @RenderBody()
-</div>
+    <div>
+        @RenderBody()
+    </div>
     <!-- Footer section -->
     <footer class="footer-section">
         <div class="container" style="margin-top:0px">
@@ -104,6 +103,5 @@
     <script src="~/Assets/js/jquery.sticky-sidebar.min.js"></script>
     <script src="~/Assets/js/jquery.magnific-popup.min.js"></script>
     <script src="~/Assets/js/main.js"></script>
-
 </body>
 </html>

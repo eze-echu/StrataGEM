@@ -3,14 +3,14 @@
     ViewBag.Title = "Prueba";
 }
 <div class="container body-content">
-    <h2 align="center"><font color="white"> @ViewBag.Juego.Game_Name </h2> <h3><font color="white">Reviews</h3>
+    <h2 align="center"><font color="white"> @ViewBag.Juego.Game_Name </font></h2> <h3><font color="white">Reviews</font></h3>
     <a href="@Url.Action("Crear", "Review", new { id = ViewBag.Juego.Game_Id})"> Crear Review</a>
     @foreach (Review a in Model)
     {
-        <div class="ReviewGame">
-            <div class="TitleRev"><h2><font color="white">@a.Review_Description - @a.Review_Rating</font></h2></div>
-            <div><h3><font color="#B57EDC">@a.Review_UserName <font color="#F5C623">@a.Review_Likes</h3></div>
-            @Html.Partial("_PerUser", new ViewDataDictionary { { "n", a.Review_IdUser }, { "f", a.Review_Id } })
-        </div>
+    <div class="ReviewGame">
+        <div class="TitleRev"><h2><font color="white">@a.Review_Description - @a.Review_Rating</font></h2></div>
+        <div><h3><font color="#B57EDC">@a.Review_UserName </font><font color="#F5C623">@a.Review_Likes</font></h3></div>
+        @Html.Partial("_PerUser", new ViewDataDictionary { { "n", a.Review_IdUser }, { "f", a.Review_Id } })
+    </div>
     }
 </div>

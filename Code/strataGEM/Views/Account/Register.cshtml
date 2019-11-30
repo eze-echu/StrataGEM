@@ -4,59 +4,58 @@
 }
 <div class="container body-content">
     <h2>@ViewBag.Title.</h2>
-        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
         {
-            @Html.AntiForgeryToken()
-            <h4>Cree una cuenta nueva.</h4>
-            <hr style="border-top:2px solid rgba(255, 255, 255, 0.54)" />
-            @Html.ValidationSummary("", new { @class = "text-danger" })
-            <div class="contact-form">
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @type = "text", placeholder = "Nombre de Usuario" } })
-                </div>
-            </div>
-            <div class="contact-form">
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Email, new { @type = "text", placeholder = "Email" })
-                </div>
-            </div>
-            <div class="contact-form">
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.Password, new { @type = "password", placeholder = "Contraseña" })
-                </div>
-            </div>
-            <div class="contact-form">
-                <div class="col-md-10">
-                    @Html.PasswordFor(m => m.ConfirmPassword, new { @type = "password", placeholder = "Repetir contraseña" })
-                </div>
-            </div>
-            <div class="contact-form">
-                @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
-                @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" }, style = "width: 30px" })
-                <div class="col-md-10">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <!--<input type="submit" class="site-btn" value="Registrarse" />-->
-                    <button class="site-btn">
-                        Registrarse
-                        <img src="~/Assets/img/icons/double-arrow.png" alt="#">
-                    </button>
-
-                </div>
-            </div>
+    @Html.AntiForgeryToken()
+    <h4>Cree una cuenta nueva.</h4>
+    <hr style="border-top:2px solid rgba(255, 255, 255, 0.54)" />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="contact-form">
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @type = "text", placeholder = "Nombre de Usuario" } })
+        </div>
+    </div>
+    <div class="contact-form">
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @type = "text", placeholder = "Email" })
+        </div>
+    </div>
+    <div class="contact-form">
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @type = "password", placeholder = "Contraseña" })
+        </div>
+    </div>
+    <div class="contact-form">
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @type = "password", placeholder = "Repetir contraseña" })
+        </div>
+    </div>
+    <div class="contact-form">
+        @Html.LabelFor(model => model.IsActive, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.CheckBoxFor(model => model.IsActive, new { htmlAttributes = new { @class = "form-control" }, style = "width: 30px" })
+        <div class="col-md-10">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <!--<input type="submit" class="site-btn" value="Registrarse" />-->
+            <button class="site-btn">
+                Registrarse
+                <img src="~/Assets/img/icons/double-arrow.png" alt="#">
+            </button>
+        </div>
+    </div>
         }
 </div>
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
-    <!--====== Javascripts & Jquery ======-->
-    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
-    <script src="~/Assets/js/bootstrap.min.js"></script>
-    <script src="~/Assets/js/jquery.slicknav.min.js"></script>
-    <script src="~/Assets/js/owl.carousel.min.js"></script>
-    <script src="~/Assets/js/jquery.sticky-sidebar.min.js"></script>
-    <script src="~/Assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="~/Assets/js/main.js"></script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<!--====== Javascripts & Jquery ======-->
+<script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+<script src="~/Assets/js/bootstrap.min.js"></script>
+<script src="~/Assets/js/jquery.slicknav.min.js"></script>
+<script src="~/Assets/js/owl.carousel.min.js"></script>
+<script src="~/Assets/js/jquery.sticky-sidebar.min.js"></script>
+<script src="~/Assets/js/jquery.magnific-popup.min.js"></script>
+<script src="~/Assets/js/main.js"></script>

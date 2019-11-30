@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace strataGEM.Models
@@ -12,16 +9,18 @@ namespace strataGEM.Models
         {
             private static SqlConnection Conectar()
             {
-                string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true" ;
+                string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true";
                 //string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
                 SqlConnection a = new SqlConnection(strConn);
                 a.Open();
                 return a;
             }
+
             private static void Desconectar(SqlConnection Conn)
             {
                 Conn.Close();
             }
+
             public static Game TraerJuegoPop()
             {
                 SqlConnection Conn = Conectar();
@@ -40,11 +39,11 @@ namespace strataGEM.Models
                     bool Game_Highlight = (bool)Lector["Destacado"];
 
                     Pop = new Game(Game_Id, Game_Name, Game_Image, Game_Description, Game_Average, Game_Highlight);
-
                 }
                 Desconectar(Conn);
                 return Pop;
             }
+
             public static void AgregarJuego(string Name, string Image, string Description, bool Destacado)
             {
                 SqlConnection Conn = Conectar();
@@ -55,15 +54,17 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
-            public static void AgregarReview(int IdGame, int Points, string UserId, string Description, string UserName)
+
+            public static void AgregarReview(int IdGame, int Points, string Description, string UserName)
             {
                 SqlConnection Conn = Conectar();
                 SqlCommand Consulta = Conn.CreateCommand();
                 Consulta.CommandType = System.Data.CommandType.Text;
-                Consulta.CommandText = "Exec dbo.AgregarReview '" + IdGame + "', '" + Points + "', '" + Description + "', '" + UserId + "', '" + UserName + "'";
+                Consulta.CommandText = "Exec dbo.AgregarReview '" + IdGame + "', '" + Points + "', '" + Description + "', '" + UserName + "'";
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
+
             public static void EliminarJuego(int IdGame)
             {
                 SqlConnection Conn = Conectar();
@@ -74,6 +75,7 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
+
             public static void EliminarUsuario(int IdUser)
             {
                 SqlConnection Conn = Conectar();
@@ -84,6 +86,7 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
+
             public static void PromedioReviewsXJuego(int IdGame)
             {
                 SqlConnection Conn = Conectar();
@@ -94,6 +97,7 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
+
             public static List<Review> Top5Reseñas()
             {
                 List<Review> Top5 = new List<Review>();
@@ -114,11 +118,11 @@ namespace strataGEM.Models
 
                     Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes, UserName);
                     Top5.Add(UnJuego);
-
                 }
                 Desconectar(Conn);
                 return Top5;
             }
+
             public static Game TraerJuego(int IdGame)
             {
                 SqlConnection Conn = Conectar();
@@ -137,11 +141,11 @@ namespace strataGEM.Models
                     bool Game_Highlight = (bool)Lector["Destacado"];
 
                     Juego = new Game(Game_Id, Game_Name, Game_Image, Game_Description, Game_Average, Game_Highlight);
-
                 }
                 Desconectar(Conn);
                 return Juego;
             }
+
             public static Review TraerReview(int IdReview)
             {
                 SqlConnection Conn = Conectar();
@@ -161,11 +165,11 @@ namespace strataGEM.Models
                     string UserName = (Lector["UserName"].ToString());
 
                     UnaReview = new Review(IdR, IdG, Points, Desc, IdUs, Likes, UserName);
-
                 }
                 Desconectar(Conn);
                 return UnaReview;
             }
+
             public static List<Game> TraerJuegos()
             {
                 List<Game> ListGames = new List<Game>();
@@ -189,6 +193,7 @@ namespace strataGEM.Models
                 Desconectar(Conn);
                 return ListGames;
             }
+
             public static List<Review> TraerReseñasXJuego(int IdGame)
             {
                 List<Review> ListRev = new List<Review>();
@@ -209,11 +214,11 @@ namespace strataGEM.Models
 
                     Review UnJuego = new Review(Review_Id, Game_Id, Review_Rating, Review_Description, User_Id, Review_Likes, UserName);
                     ListRev.Add(UnJuego);
-
                 }
                 Desconectar(Conn);
                 return ListRev;
             }
+
             public static void UpdateReview(int id, int Punt, string Desc)
             {
                 SqlConnection Conn = Conectar();
@@ -223,6 +228,7 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
+
             public static bool YaReview(string id, int juego)
             {
                 bool yatiene = false;
@@ -238,7 +244,16 @@ namespace strataGEM.Models
                 Desconectar(Conn);
                 return yatiene;
             }
-        }
 
+            public static void AssignRole(string id)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.AssignRole '" + id + "'";
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
+        }
     }
 }

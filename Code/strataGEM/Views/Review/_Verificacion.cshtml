@@ -1,94 +1,93 @@
 ﻿@using Microsoft.AspNet.Identity
 @model strataGEM.Models.Review
-    <div class="col-md-8">
-        @if (Request.IsAuthenticated)
+<div class="col-md-8">
+    @if (Request.IsAuthenticated)
+    {
+        string b = User.Identity.GetUserId();
+        if (b == Model.Review_IdUser || User.IsInRole("Admin") || User.IsInRole("Moderador"))
         {
-            string b = User.Identity.GetUserId();
-            if (b == Model.Review_IdUser || User.IsInRole("Admin") || User.IsInRole("Moderador"))
+            if (b == Model.Review_IdUser)
             {
-                if (b == Model.Review_IdUser)
+                using (Html.BeginForm("Edit", "Review", FormMethod.Post))
                 {
-                    using (Html.BeginForm( "Edit", "Review", FormMethod.Post))
-                    {
-                        @Html.AntiForgeryToken()
-                        <div class="form-horizontal">
-                            <h4>Review</h4>
-                            <hr />
-                            <div class="contact-form">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Review_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "text" }, style = "height: calc(2.25rem + 5px)" })
-                                        @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        <h4>Review</h4>
+        <hr />
+        <div class="contact-form">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Review_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "text" }, style = "height: calc(2.25rem + 5px)" })
+                    @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Review_Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.TextAreaFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea" } })
-                                        @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                @Html.HiddenFor(model => model.Review_Id)
-                                @Html.HiddenFor(model => model.Review_IdGame)
-                                <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
-                                    Iniciar Sesion
-                                    <img src="/Assets/img/icons/double-arrow.png" alt="#">
-                                </button>
-                            </div>
-                        </div>
-                    }
-                }
-                else if (User.IsInRole("Admin") || User.IsInRole("Moderador"))
-                {
-                    using (Html.BeginForm())
-                    {
-                        @Html.AntiForgeryToken()
-
-                        <div class="form-horizontal">
-                            <h4>Review (Mod)</h4>
-                            <hr />
-                            <div class="contact-form">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Review_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "text" }, style = "height: calc(2.25rem + 5px)" })
-                                        @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    @Html.LabelFor(model => model.Review_Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                                    <div class="col-md-10">
-                                        @Html.TextAreaFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea" } })
-                                        @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
-                                    </div>
-                                </div>
-                                @Html.HiddenFor(model => model.Review_Id)
-                                @Html.HiddenFor(model => model.Review_IdGame)
-
-                                <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
-                                    Iniciar Sesion
-                                    <img src="/Assets/img/icons/double-arrow.png" alt="#">
-                                </button>
-                            </div>
-                        </div>
-                    }
+            <div class="form-group">
+                @Html.LabelFor(model => model.Review_Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea" } })
+                    @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.Review_Id)
+            @Html.HiddenFor(model => model.Review_IdGame)
+            <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
+                Iniciar Sesion
+                <img src="/Assets/img/icons/double-arrow.png" alt="#">
+            </button>
+        </div>
+    </div>
                 }
             }
-            else
+            else if (User.IsInRole("Admin") || User.IsInRole("Moderador"))
             {
-                <p>
-                    Necesitas ser el usuario que hizo el post para poder modificarlo
-                </p>
+                using (Html.BeginForm())
+                {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Review (Mod)</h4>
+        <hr />
+        <div class="contact-form">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Review_Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Review_Rating, new { htmlAttributes = new { @type = "text" }, style = "height: calc(2.25rem + 5px)" })
+                    @Html.ValidationMessageFor(model => model.Review_Rating, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Review_Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextAreaFor(model => model.Review_Description, new { htmlAttributes = new { @type = "textarea" } })
+                    @Html.ValidationMessageFor(model => model.Review_Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @Html.HiddenFor(model => model.Review_Id)
+            @Html.HiddenFor(model => model.Review_IdGame)
+
+            <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
+                Iniciar Sesion
+                <img src="/Assets/img/icons/double-arrow.png" alt="#">
+            </button>
+        </div>
+    </div>
+                }
             }
         }
         else
         {
-            <p>Acceso Denegado</p>
+    <p>
+        Necesitas ser el usuario que hizo el post para poder modificarlo
+    </p>
         }
-    </div>
-
+    }
+    else
+    {
+    <p>Acceso Denegado</p>
+    }
+</div>

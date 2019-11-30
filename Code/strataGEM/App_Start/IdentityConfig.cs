@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
 using strataGEM.Models;
+using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace strataGEM
 {
@@ -36,6 +34,7 @@ namespace strataGEM
     public class ApplicationUserManager : UserManager<ApplicationUser>
     {
         private const int PASSWORD_HISTORY_LIMIT = 3;
+
         private async Task<bool> IsPasswordHistory(string userId, string newPassword)
         {
             var user = await FindByIdAsync(userId);
@@ -46,6 +45,7 @@ namespace strataGEM
                 return true;
             return false;
         }
+
         public Task AddToPasswordHistoryAsync(ApplicationUser user, string password)
         {
             user.PasswordHistory.Add(new PasswordHistory()
@@ -55,6 +55,7 @@ namespace strataGEM
             });
             return UpdateAsync(user);
         }
+
         public override async Task<IdentityResult> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
         {
             if (await IsPasswordHistory(userId, newPassword))
@@ -71,13 +72,14 @@ namespace strataGEM
             }
             return result;
         }
+
         public ApplicationUserManager(IUserStore<ApplicationUser> store)
             : base(store)
         {
             PasswordValidator = new MinimumLengthValidator(8);
         }
 
-        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context) 
+        public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
             var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure la lógica de validación de nombres de usuario
@@ -118,7 +120,7 @@ namespace strataGEM
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)
             {
-                manager.UserTokenProvider = 
+                manager.UserTokenProvider =
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace strataGEM.Models
+﻿namespace strataGEM.Models
 {
     public class Game
     {
@@ -23,10 +18,9 @@ namespace strataGEM.Models
             Game_Average = e;
             Game_Highlight = f;
         }
+
         public Game()
         {
-
         }
-
     }
 }

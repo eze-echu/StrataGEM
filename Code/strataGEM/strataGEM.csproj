@@ -350,6 +350,7 @@
     <Content Include="Views\Review\Crear.cshtml" />
     <Content Include="Views\Review\sdhfsjkdtkj.cshtml" />
     <Content Include="Views\Review\_Verificacion.cshtml" />
+    <Content Include="Views\Review\_CrearVer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

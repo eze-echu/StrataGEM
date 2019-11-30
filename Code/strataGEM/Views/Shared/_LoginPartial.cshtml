@@ -3,7 +3,7 @@
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+@Html.AntiForgeryToken()
 
 <nav class="top-nav-area w-100">
     <div class="user-panel">
@@ -16,10 +16,10 @@
 }
 else
 {
-    <nav class="top-nav-area">
-        <div class="user-panel">
-            @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) /
-            @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-        </div>
-    </nav>
+<nav class="top-nav-area">
+    <div class="user-panel">
+        @Html.ActionLink("Registrarse", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" }) /
+        @Html.ActionLink("Iniciar sesión", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </div>
+</nav>
 }

@@ -31,6 +31,7 @@ namespace strataGEM.Models
         [Required]
         [Display(Name = "Código")]
         public string Code { get; set; }
+
         public string ReturnUrl { get; set; }
 
         [Display(Name = "¿Recordar este explorador?")]
