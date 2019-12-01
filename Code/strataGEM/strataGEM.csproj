@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -184,9 +187,6 @@
     <Reference Include="Microsoft.AI.Web">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.5.1\lib\net45\Microsoft.AI.Web.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -195,8 +195,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -207,26 +209,96 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Clases.cs" />
+    <Compile Include="Models\Game.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Review.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\css\animate.css" />
+    <Content Include="Assets\css\bootstrap.min.css" />
+    <Content Include="Assets\css\font-awesome.min.css" />
+    <Content Include="Assets\css\magnific-popup.css" />
+    <Content Include="Assets\css\owl.carousel.min.css" />
+    <Content Include="Assets\css\slicknav.min.css" />
+    <Content Include="Assets\css\style.css" />
+    <Content Include="Assets\icon-fonts\fontawesome-webfont.svg" />
+    <Content Include="Assets\img\add.jpg" />
+    <Content Include="Assets\img\author.jpg" />
+    <Content Include="Assets\img\blog-big\1.jpg" />
+    <Content Include="Assets\img\blog-big\2.jpg" />
+    <Content Include="Assets\img\blog-big\3.jpg" />
+    <Content Include="Assets\img\blog-widget\1.jpg" />
+    <Content Include="Assets\img\blog-widget\2.jpg" />
+    <Content Include="Assets\img\blog-widget\3.jpg" />
+    <Content Include="Assets\img\blog-widget\4.jpg" />
+    <Content Include="Assets\img\blog\1.jpg" />
+    <Content Include="Assets\img\blog\2.jpg" />
+    <Content Include="Assets\img\blog\3.jpg" />
+    <Content Include="Assets\img\comment-widget\1.jpg" />
+    <Content Include="Assets\img\comment-widget\2.jpg" />
+    <Content Include="Assets\img\comment-widget\3.jpg" />
+    <Content Include="Assets\img\comment-widget\4.jpg" />
+    <Content Include="Assets\img\favicon.ico" />
+    <Content Include="Assets\img\featured-bg.jpg" />
+    <Content Include="Assets\img\footer-left-pic.png" />
+    <Content Include="Assets\img\footer-right-pic.png" />
+    <Content Include="Assets\img\games\1.jpg" />
+    <Content Include="Assets\img\games\2.jpg" />
+    <Content Include="Assets\img\games\3.jpg" />
+    <Content Include="Assets\img\games\4.jpg" />
+    <Content Include="Assets\img\games\5.jpg" />
+    <Content Include="Assets\img\games\6.jpg" />
+    <Content Include="Assets\img\games\7.jpg" />
+    <Content Include="Assets\img\games\8.jpg" />
+    <Content Include="Assets\img\games\9.jpg" />
+    <Content Include="Assets\img\games\big.jpg" />
+    <Content Include="Assets\img\icons\arrow-down-color.png" />
+    <Content Include="Assets\img\icons\arrow-down.png" />
+    <Content Include="Assets\img\icons\double-arrow.png" />
+    <Content Include="Assets\img\icons\location.png" />
+    <Content Include="Assets\img\icons\mail.png" />
+    <Content Include="Assets\img\icons\phone.png" />
+    <Content Include="Assets\img\icons\solid-right-arrow.png" />
+    <Content Include="Assets\img\logo.png" />
+    <Content Include="Assets\img\page-top-bg\1.jpg" />
+    <Content Include="Assets\img\page-top-bg\2.jpg" />
+    <Content Include="Assets\img\page-top-bg\3.jpg" />
+    <Content Include="Assets\img\page-top-bg\4.jpg" />
+    <Content Include="Assets\img\promo-bg.jpg" />
+    <Content Include="Assets\img\review\1.jpg" />
+    <Content Include="Assets\img\review\2.jpg" />
+    <Content Include="Assets\img\review\3.jpg" />
+    <Content Include="Assets\img\review\4.jpg" />
+    <Content Include="Assets\img\review\5.jpg" />
+    <Content Include="Assets\img\slider-bg-1.jpg" />
+    <Content Include="Assets\img\slider-bg-2.jpg" />
+    <Content Include="Assets\js\bootstrap.min.js" />
+    <Content Include="Assets\js\jquery-3.2.1.min.js" />
+    <Content Include="Assets\js\jquery.magnific-popup.min.js" />
+    <Content Include="Assets\js\jquery.slicknav.min.js" />
+    <Content Include="Assets\js\jquery.sticky-sidebar.min.js" />
+    <Content Include="Assets\js\main.js" />
+    <Content Include="Assets\js\owl.carousel.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\Logo_StrataGEM.gif" />
     <Content Include="Content\Images\Logo_StrataGEM.png" />
+    <Content Include="Content\Images\Logo_StrataGEM1.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\icon-fonts\fontawesome-webfont.eot" />
+    <Content Include="Assets\icon-fonts\fontawesome-webfont.woff" />
+    <Content Include="Assets\icon-fonts\fontawesome-webfont.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -272,9 +344,17 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_PerUser.cshtml" />
+    <Content Include="Views\Review\IndexRev.cshtml" />
+    <Content Include="Views\Review\Edit.cshtml" />
+    <Content Include="Views\Review\Crear.cshtml" />
+    <Content Include="Views\Review\sdhfsjkdtkj.cshtml" />
+    <Content Include="Views\Review\_Verificacion.cshtml" />
+    <Content Include="Views\Review\_CrearVer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Game\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -324,7 +404,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>

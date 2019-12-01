@@ -1,48 +1,107 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!--@Html.ActionLink("Nombre de aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })-->
-                <a href="@Url.Action("Index", "Home")" class="navbar-brand" style="padding-top: 0px">
-                    <img src="~/Content/Images/Logo_StrataGEM.png" title="title" alt="additional title" height="50" width="70" />
-                </a>
+    <!-- Header section -->
+    <header class="header-section">
+        <div class="header-warp">
+            <div class="header-social d-flex justify-content-end">
+                <p>Follow us:</p>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-pinterest"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-facebook"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-twitter"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-dribbble"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-behance"></i></a>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <!--<li>@Html.ActionLink("Inicio", "Index", "Home")</li>-->
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+            <div class="header-bar-warp d-flex">
+                <!-- site logo -->
+                <a href="@Url.Action("Index", "Home")" class="site-logo">
+                    <img src="~/Content/Images/Logo_StrataGEM1.png" alt="StrataGEM, que no te agarren desapercibido" style="height: 28.313px; width: 156.563px">
+                </a>
+                <nav class="top-nav-area w-100">
+                    <div class="user-panel">
+                        @Html.Partial("_LoginPartial")
+                    </div>
+                    <!--<div class="user-panel">
+                                        @Html.ActionLink("Log In", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) /
+                                        @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
+                    </div>-->
+                    <!-- Menu -->
+                    <ul class="main-menu primary-menu">
+                        <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                        <li>
+                            <a href="@Url.Action("List", "Games")">Games</a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Top", "Games")">Top 10</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("List", "Reviews")">Reviews</a>
+                            <ul class="sub-menu">
+                                <li><a href="@Url.Action("Prueba", "Review")">Most Voted</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="blog.html">News</a></li>
+                        <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+                    </ul>
+                </nav>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
+    </header>
 
+    <!-- Header section end -->
+    <!-- <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li>@Html.ActionLink("Inicio", "Index", "Home")</li>-
+            <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+            <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+        </ul>
+    </div> -->
+    @RenderSection("Heros", required: false)
+    <div>
+        @RenderBody()
+    </div>
+    <!-- Footer section -->
+    <footer class="footer-section">
+        <div class="container" style="margin-top:0px">
+            <a href="#" class="footer-logo">
+                <img src="~/Content/Images/Logo_StrataGEM1.png" alt="">
+            </a>
+            <ul class="main-menu footer-menu">
+                <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li><a href="@Url.Action("List", "Games")">Games</a></li>
+                <li><a href="@Url.Action("List", "Reviews")">Reviews</a></li>
+                <li><a href="">News</a></li>
+                <li><a href="@Url.Action("Contact", "Home")">Contact</a></li>
+            </ul>
+            <div class="footer-social d-flex justify-content-center">
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-pinterest"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-facebook"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-twitter"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-dribbble"></i></a>
+                <a href="@Url.Action("Contact", "Home")"><i class="fa fa-behance"></i></a>
+            </div>
+            <div class="copyright"><a href="">Colorlib</a> 2018 All rights reserved</div>
+        </div>
+    </footer>
+    <!-- Footer section end -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <!--====== Javascripts & Jquery ======-->
+    <script src="~/Assets/js/jquery-3.2.1.min.js"></script>
+    <script src="~/Assets/js/bootstrap.min.js"></script>
+    <script src="~/Assets/js/jquery.slicknav.min.js"></script>
+    <script src="~/Assets/js/owl.carousel.min.js"></script>
+    <script src="~/Assets/js/jquery.sticky-sidebar.min.js"></script>
+    <script src="~/Assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="~/Assets/js/main.js"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(strataGEM.Startup))]
+
 namespace strataGEM
 {
     public partial class Startup

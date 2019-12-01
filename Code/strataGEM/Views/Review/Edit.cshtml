@@ -1,0 +1,13 @@
+﻿@model strataGEM.Models.Review
+
+@{
+    ViewBag.Title = "Editar";
+}
+<div class="container body-content">
+    <h2>Editar</h2>
+    @Html.Partial("_Verificacion", Model)
+
+    <div class="blog-text text-box text-white" style="padding-top: 25px; padding-bottom: 20px">
+        <a href=@Url.Action("IndexRev", new { id = Model.Review_IdGame})> Volver a la lista <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+    </div>
+</div>

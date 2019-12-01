@@ -1,0 +1,7 @@
+﻿@model strataGEM.Models.Review
+@using strataGEM.Models
+@using Microsoft.AspNet.Identity
+@{
+
+}
+@Html.Partial("_CrearVer", Model, new ViewDataDictionary { { "I", ViewBag.Juego.Game_Id }, { "N", ViewBag.Juego.Game_Name } })

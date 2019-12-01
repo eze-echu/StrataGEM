@@ -15,11 +15,11 @@
             [
             @if (Model.HasPassword)
             {
-                @Html.ActionLink("Cambiar la contraseña", "ChangePassword")
+            @Html.ActionLink("Cambiar la contraseña", "ChangePassword")
             }
             else
             {
-                @Html.ActionLink("Crear", "SetPassword")
+            @Html.ActionLink("Crear", "SetPassword")
             }
             ]
         </dd>
@@ -30,13 +30,13 @@
         </dd>
         @*
             Los números de teléfono se pueden usar como una segunda fase de comprobación en un sistema de autenticación en dos fases.
-             
+
              Consulte <a href="https://go.microsoft.com/fwlink/?LinkId=403804">este artículo</a>
                 para obtener detalles sobre cómo configurar esta aplicación ASP.NET para que sea compatible con la autenticación en dos fases mediante SMS.
-             
+
              Quite la marca de comentario de los bloques siguientes después de configurar la autenticación en dos fases.
         *@
-        @*  
+        @*
             <dt>Número de teléfono:</dt>
             <dd>
                 @(Model.PhoneNumber ?? "None")

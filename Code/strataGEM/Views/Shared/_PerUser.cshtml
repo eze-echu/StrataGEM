@@ -1,0 +1,33 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    string b = User.Identity.GetUserId();
+    int aaaa = (int)ViewData["f"];
+    if (b == (string)ViewData["n"] || User.IsInRole("Admin") || User.IsInRole("Moderador"))
+    {
+        if (b == (string)ViewData["n"])
+        {
+            <p>
+                Eliminar
+                <a href=@Url.Action("Edit", "Review", new { id = aaaa })>Editar</a>
+            </p>
+        }
+        else
+        {
+            <p>
+                Eliminar (Mod)
+                <a href=@Url.Action("Edit", "Review", new { id = aaaa })>Editar (Mod)</a>
+            </p>
+        }
+    }
+    else
+    {
+        <p>
+            Like / Dislike
+        </p>
+    }
+}
+else
+{
+    <p>Registrate para cualquier cosa</p>
+}

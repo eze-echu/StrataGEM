@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using strataGEM.Models;
 using System.Web.Mvc;
 
 namespace strataGEM.Controllers
@@ -10,6 +7,7 @@ namespace strataGEM.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.PopGame = Clases.BD.TraerJuegoPop();
             return View();
         }
 
