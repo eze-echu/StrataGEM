@@ -6,27 +6,24 @@
 }
 <body style="height: auto">
     <div class="container body-content">
-        <h2>Lista</h2>
+        <h2>Lista De Juegos</h2>
 
-        <p>
-            @Html.ActionLink("Create New", "Create")
-        </p>
         <table class="table">
             <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Game_Id)
+                    <font color="#B57EDC">
+                        Titulo
+                    </font>
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Game_Name)
+                    <font color="#B57EDC">
+                        Descripcion
+                    </font>
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Game_Image)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Game_Description)
-                </th>
-                <th>
-                    Reviews
+                    <font color="#B57EDC">
+                        Reviews
+                    </font>
                 </th>
                 <th></th>
             </tr>
@@ -36,17 +33,7 @@
                 <tr>
                     <td>
                         <font color="white">
-                            @Html.DisplayFor(modelItem => item.Game_Id)
-                        </font>
-                    </td>
-                    <td>
-                        <font color="white">
                             @Html.DisplayFor(modelItem => item.Game_Name)
-                        </font>
-                    </td>
-                    <td>
-                        <font color="white">
-                            @Html.DisplayFor(modelItem => item.Game_Image)
                         </font>
                     </td>
                     <td>
@@ -55,7 +42,10 @@
                         </font>
                     </td>
                     <td>
-                        <a href=@Url.Action("IndexRev", "Review", new { id = item.Game_Id})> Ver Reviews</a>
+
+                        <div class="blog-text text-box text-white" style="">
+                            <a href=@Url.Action("IndexRev", "Review", new { id = item.Game_Id})> Ver Reviews <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+                        </div>
                     </td>
                 </tr>
             }
