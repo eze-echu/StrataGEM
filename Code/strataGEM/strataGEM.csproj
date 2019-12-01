@@ -351,10 +351,10 @@
     <Content Include="Views\Review\sdhfsjkdtkj.cshtml" />
     <Content Include="Views\Review\_Verificacion.cshtml" />
     <Content Include="Views\Review\_CrearVer.cshtml" />
+    <Content Include="Views\Game\Lista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Game\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
