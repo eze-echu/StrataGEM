@@ -1,0 +1,64 @@
+﻿@model IEnumerable<strataGEM.Models.Game>
+
+@{
+    ViewBag.Title = "Lista";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<body style="height: auto">
+    <div class="container body-content">
+        <h2>Lista</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Game_Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Game_Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Game_Image)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Game_Description)
+                </th>
+                <th>
+                    Reviews
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <font color="white">
+                            @Html.DisplayFor(modelItem => item.Game_Id)
+                        </font>
+                    </td>
+                    <td>
+                        <font color="white">
+                            @Html.DisplayFor(modelItem => item.Game_Name)
+                        </font>
+                    </td>
+                    <td>
+                        <font color="white">
+                            @Html.DisplayFor(modelItem => item.Game_Image)
+                        </font>
+                    </td>
+                    <td>
+                        <font color="white">
+                            @Html.DisplayFor(modelItem => item.Game_Description)
+                        </font>
+                    </td>
+                    <td>
+                        <a href=@Url.Action("IndexRev", "Review", new { id = item.Game_Id})> Ver Reviews</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</body>

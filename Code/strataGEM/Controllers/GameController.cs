@@ -7,11 +7,10 @@ namespace strataGEM.Controllers
     public class GameController : Controller
     {
         // GET: Game
-        public ActionResult Index()
+        public ActionResult Lista()
         {
             List<Game> LGames = Clases.BD.TraerJuegos();
-            ViewBag.Todass = LGames;
-            return View();
+            return View(LGames);
         }
 
         // GET: Game/Details/5
