@@ -348,10 +348,10 @@
     <Content Include="Views\Review\IndexRev.cshtml" />
     <Content Include="Views\Review\Edit.cshtml" />
     <Content Include="Views\Review\Crear.cshtml" />
-    <Content Include="Views\Review\sdhfsjkdtkj.cshtml" />
     <Content Include="Views\Review\_Verificacion.cshtml" />
     <Content Include="Views\Review\_CrearVer.cshtml" />
     <Content Include="Views\Game\Lista.cshtml" />
+    <Content Include="Views\Shared\_Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
