@@ -38,9 +38,13 @@
                         @Html.HiddenFor(model => model.Review_IdGame)
                         @Html.HiddenFor(model => model.Review_UserName)
                         <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
-                            Iniciar Sesion
+                            Crear Review
                             <img src="/Assets/img/icons/double-arrow.png" alt="#">
                         </button>
+
+                        <div class="blog-text text-box text-white" style="padding-top: 25px; padding-bottom: 20px">
+                            <a href=@Url.Action("IndexRev", new { id = (int)ViewData["I"]})> Volver a la lista <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+                        </div>
                     }
                 </div>
             </div>

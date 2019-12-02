@@ -9,8 +9,8 @@ namespace strataGEM.Models
         {
             private static SqlConnection Conectar()
             {
-                string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true";
-                //string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
+                //string strConn = "Server=.;Database=StrataGEM; Trusted_Connection=true";
+                string strConn = "Server=.;Database=StrataGEM;user id=alumno;password=alumno";
                 SqlConnection a = new SqlConnection(strConn);
                 a.Open();
                 return a;
@@ -55,12 +55,12 @@ namespace strataGEM.Models
                 Desconectar(Conn);
             }
 
-            public static void AgregarReview(int IdGame, int Points, string Description, string UserName)
+            public static void AgregarReview(int IdGame, int Points, string Description, string UserId, string UserName)
             {
                 SqlConnection Conn = Conectar();
                 SqlCommand Consulta = Conn.CreateCommand();
                 Consulta.CommandType = System.Data.CommandType.Text;
-                Consulta.CommandText = "Exec dbo.AgregarReview '" + IdGame + "', '" + Points + "', '" + Description + "', '" + UserName + "'";
+                Consulta.CommandText = "Exec dbo.AgregarReview '" + IdGame + "', '" + Points + "', '" + Description + "', '" + UserId + "', '" + UserName + "'";
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }

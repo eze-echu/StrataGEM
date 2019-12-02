@@ -42,7 +42,7 @@ namespace strataGEM.Controllers
             try
             {
                 // TODO: Add insert logic here
-                Clases.BD.AgregarReview(Tempo.Review_IdGame, Tempo.Review_Rating, Tempo.Review_Description, Tempo.Review_UserName);
+                Clases.BD.AgregarReview(Tempo.Review_IdGame, Tempo.Review_Rating, Tempo.Review_Description, Tempo.Review_IdUser, Tempo.Review_UserName);
                 return RedirectToAction("IndexRev", new { id = Tempo.Review_IdGame });
             }
             catch
