@@ -254,6 +254,16 @@ namespace strataGEM.Models
                 Consulta.ExecuteNonQuery();
                 Desconectar(Conn);
             }
+
+            public static void EliminarReview(int IdRev)
+            {
+                SqlConnection Conn = Conectar();
+                SqlCommand Consulta = Conn.CreateCommand();
+                Consulta.CommandType = System.Data.CommandType.Text;
+                Consulta.CommandText = "Exec dbo.EliminarReview '" + IdRev + "'";
+                Consulta.ExecuteNonQuery();
+                Desconectar(Conn);
+            }
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿@using strataGEM.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Iniciar sesión";
+                /**/
+
+                ViewBag.Title = "Iniciar sesión";
 }
 @Styles.Render("~/Content/css")
 
@@ -12,53 +14,48 @@
             <section id="loginForm">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
                 {
-                @Html.AntiForgeryToken()
-                <h4>Use una cuenta local para iniciar sesión.</h4>
-                <hr style="border-top:2px solid rgba(255, 255, 255, 0.54)" />
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="contact-form">
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(m => m.Email, new { @type = "text", placeholder = "Nombre de Usuario" })
-                        @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                    @Html.AntiForgeryToken()
+                    <h4>Use una cuenta local para iniciar sesión.</h4>
+                    <hr style="border-top:2px solid rgba(255, 255, 255, 0.54)" />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="contact-form">
+                        <div class="col-md-10">
+                            @Html.TextBoxFor(m => m.Email, new { @type = "text", placeholder = "Nombre de Usuario" })
+                            @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <div class="col-md-10">
-                        @Html.PasswordFor(m => m.Password, new { @type = "password", placeholder = "Password" })
-                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                    <div class="contact-form">
+                        <div class="col-md-10">
+                            @Html.PasswordFor(m => m.Password, new { @type = "password", placeholder = "Password" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
-                <div class="contact-form" style="border-bottom: 2px solid rgba(255, 255, 255, 0.54)">
-                    @Html.LabelFor(m => m.RememberMe, htmlAttributes: new { })
-                    @Html.CheckBoxFor(m => m.RememberMe, new { htmlAttributes = new { @class = "form-control" }, style = "width: 30px" })
-                    <div class="col-md-10">
+                    <div class="contact-form" style="border-bottom: 2px solid rgba(255, 255, 255, 0.54)">
+                        @Html.LabelFor(m => m.RememberMe, htmlAttributes: new { })
+                        @Html.CheckBoxFor(m => m.RememberMe, new { htmlAttributes = new { @class = "form-control" }, style = "width: 30px" })
+                        <div class="col-md-10">
+                        </div>
                     </div>
-                </div>
-                <div class="contact-form">
-                    <div class="col-md-offset-2 col-md-10">
-                        <!--<input type="submit" value="Iniciar sesión" class="btn btn-default" />-->
-                        <button class="site-btn" style="margin-top: 15px">
-                            Iniciar Sesion
-                            <img src="/Assets/img/icons/double-arrow.png" alt="#">
-                        </button>
+                    <div class="contact-form">
+                        <div class="col-md-offset-2 col-md-10">
+                            <!--<input type="submit" value="Iniciar sesión" class="btn btn-default" />-->
+                            <button class="site-btn" style="margin-top: 15px">
+                                Iniciar Sesion
+                                <img src="/Assets/img/icons/double-arrow.png" alt="#">
+                            </button>
+                        </div>
                     </div>
-                </div>
-                <div class="blog-text text-box text-white" style="padding-top: 25px; padding-bottom: 20px">
-                    <a href="@Url.Action("Register", "Account")" class="read-more">Registrar como nuevo usuario  <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
-                </div>
-                <!--<p>
-                    @Html.ActionLink("Registrar como nuevo usuario", "Register")
-                </p>-->
-                @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
-                    <p>
-                        @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
-                    </p>*@
+                    <div class="blog-text text-box text-white" style="padding-top: 25px; padding-bottom: 20px">
+                        <a href="@Url.Action("Register", "Account")" class="read-more">Registrar como nuevo usuario  <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+                    </div>
+                    <!--<p>
+                        @Html.ActionLink("Registrar como nuevo usuario", "Register")
+                    </p>-->
+                    @* Habilite esta opción después de habilitar la confirmación de la cuenta para la función de restablecimiento de contraseña
+                        <p>
+                            @Html.ActionLink("¿Ha olvidado su contraseña?", "ForgotPassword")
+                        </p>*@
                 }
-            </section>
-        </div>
-        <div class="col-md-4">
-            <section id="socialLoginForm">
-                @Html.Partial("_ExternalLoginsListPartial", new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
             </section>
         </div>
     </div>

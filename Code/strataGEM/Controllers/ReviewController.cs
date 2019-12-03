@@ -76,20 +76,21 @@ namespace strataGEM.Controllers
         }
 
         // GET: Review/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Eliminar(int id)
         {
-            return View();
+            Review Hola = Clases.BD.TraerReview(id);
+            return View(Hola);
         }
 
         // POST: Review/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Eliminar(Review collection)
         {
             try
             {
                 // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
+                Clases.BD.EliminarReview(collection.Review_Id);
+                return RedirectToAction("IndexRev", new { id = collection.Review_IdGame });
             }
             catch
             {

@@ -1,0 +1,115 @@
+﻿@model strataGEM.Models.Review
+
+<h3>Are you sure you want to delete this?</h3>
+
+@using Microsoft.AspNet.Identity
+@using strataGEM.Models
+
+@if (Request.IsAuthenticated)
+{
+    string userId = User.Identity.GetUserId();
+    if (userId == Model.Review_IdUser)
+    {
+        <h4>Review</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <font color="#B57EDC">Raiting</font>
+            </dt>
+
+            <dd>
+                <font color="white">@Html.DisplayFor(model => model.Review_Rating)</font>
+            </dd>
+
+            <dt>
+                <font color="#B57EDC">Reseña</font>
+            </dt>
+
+            <dd>
+                <font color="white">@Html.DisplayFor(model => model.Review_Description)</font>
+            </dd>
+
+            <dt>
+                <font color="#B57EDC">Nombre de Usuario</font>
+            </dt>
+
+            <dd>
+                <font color="white">@Html.DisplayFor(model => model.Review_UserName)</font>
+            </dd>
+        </dl>
+
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(model => model.Review_Id)
+            @Html.HiddenFor(model => model.Review_IdGame)
+            <div class="form-actions no-color">
+                <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
+                    Eliminar
+                    <img src="/Assets/img/icons/double-arrow.png" alt="#">
+                </button>
+            </div>
+        }
+
+        <div class="blog-text text-box text-white" style="padding-top: 25px; padding-bottom: 20px">
+            <a href=@Url.Action("IndexRev", new { id = Model.Review_IdGame})> Volver a la lista <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+        </div>
+    }
+    else if (User.IsInRole("Admin") || User.IsInRole("Moderador"))
+    {
+        <h4>Review (Mod)</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                <font color="#B57EDC">Raiting</font>
+            </dt>
+
+            <dd>
+                <font color="white">@Html.DisplayFor(model => model.Review_Rating)</font>
+            </dd>
+
+            <dt>
+                <font color="#B57EDC">Reseña</font>
+            </dt>
+
+            <dd>
+                <font color="white">@Html.DisplayFor(model => model.Review_Description)</font>
+            </dd>
+
+            <dt>
+                <font color="#B57EDC">Nombre de Usuario</font>
+            </dt>
+
+            <dd>
+                <font color="white">@Html.DisplayFor(model => model.Review_UserName)</font>
+            </dd>
+        </dl>
+
+        using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.HiddenFor(model => model.Review_Id)
+            @Html.HiddenFor(model => model.Review_IdGame)
+            <div class="form-actions no-color">
+                <button class="site-btn" style="margin-top: 15px; margin-bottom: 20px">
+                    Eliminar
+                    <img src="/Assets/img/icons/double-arrow.png" alt="#">
+                </button>
+            </div>
+        }
+
+        <div class="blog-text text-box text-white" style="padding-top: 25px; padding-bottom: 20px">
+            <a href=@Url.Action("IndexRev", new { id = Model.Review_IdGame})> Volver a la lista <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+        </div>
+    }
+}
+else
+{
+    <h3>Acceso Denegado: Debe estar logueado para realizar esta accion</h3>
+
+    <div class="blog-text text-box text-white" style="padding-top: 25px; padding-bottom: 20px">
+        <a href=@Url.Action("IndexRev", new { id = Model.Review_IdGame})> Volver a la lista <img src="~/Assets/img/icons/double-arrow.png" alt="#" /></a>
+    </div>
+}
